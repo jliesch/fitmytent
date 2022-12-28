@@ -1,0 +1,510 @@
+<html>
+<head>
+<title>Fit My Tent</title>
+<link rel="stylesheet" href="tent_style.css">
+</head>
+<body>
+
+<div class="header">
+<a href="index.html" class="title-icon">&#x25b3;</a><a href="index.html" class="title">Fit my Tent</a>
+<a href="help.html" class="menu">Help</a>
+<a href="data.html" class="menu">Data</a>
+<a href="about.html" class="menu">About</a>
+<a href="recommend.html" class="menu">Recommend</a>
+<a href="index.html" class="menu">Home</a>
+</div>
+
+<div id="options">
+<table>
+<tr>
+  <td></td>
+  <td class="value"><select name="tent-brand-dropdown" id="tent-brand-dropdown" onchange="pickBrand()"></select></td>
+</tr>
+<tr><td class="label">Tent:</td>
+  <td class="value">
+  <select name="tent-dropdown" id="tent-dropdown" onchange="drawFromSettings(true)"></select>
+  </td>
+</tr>
+
+<tr class="generic-tent"><td class="label">Tent Length:</td><td class="value"><input type="number" id="generic-tent-length-input" class="input-length" value=""> <span class="units">inches</span></td></tr>
+<tr class="generic-tent"><td class="label">Tent Width:</td><td class="value"><input type="number" id="generic-tent-width-input" class="input-length" value=""> <span class="units">inches</span></td></tr>
+<tr class="generic-tent"><td class="label">Tent Height:</td><td class="value"><input type="number" id="generic-tent-height-input" class="input-length" value=""> <span class="units">inches</span></td></tr>
+
+<tr><td class="label">Compare Tent:</td><td class="value">
+  <select name="tent-compare-dropdown" id="tent-compare-dropdown" onchange="drawFromSettings(true)"><option>None</option>
+  </select>
+</td></tr>
+
+<tr class="generic-compare-tent"><td class="label">Tent Length:</td><td class="value"><input type="number" id="generic-compare-tent-length-input" class="input-length" value=""> <span class="units">inches</span></td></tr>
+<tr class="generic-compare-tent"><td class="label">Tent Width:</td><td class="value"><input type="number" id="generic-compare-tent-width-input" class="input-length" value=""> <span class="units">inches</span></td></tr>
+<tr class="generic-compare-tent"><td class="label">Tent Height:</td><td class="value"><input type="number" id="generic-compare-tent-height-input" class="input-length" value=""> <span class="units">inches</span></td></tr>
+
+<tr><td class="label">Your Height:</td><td class="value"><input type="number" id="height-input" class="input-length"> <span class="units">inches</span></td></tr>
+
+<tr class="advanced-options"><td class="label">Sitting Height:</td><td class="value"><input type="number" id="sitting-height-input" class="input-length"> <span class="units">inches</span></td></tr>
+<tr class="advanced-options"><td class="label">Shoulder Width:</td><td class="value"><input type="number" id="shoulder-width-input" class="input-length"> <span class="units">inches</span></td></tr>
+<tr class="advanced-options"><td class="label">Foot Length:</td><td class="value"><input type="number" id="foot-length-input" class="input-length"> <span class="units">inches</span></td></tr>
+<tr class="advanced-options"><td class="label">Sleeping Bag Loft:</td><td class="value"><input type="number" id="loft-input" class="input-length"> <span class="units">inches</span></td></tr>
+<tr class="advanced-options"><td class="label">Sleeping Pad Height:</td><td class="value"><input type="number" id="pad-height-input" class="input-length"> <span class="units">inches</span></td></tr>
+
+<tr class="advanced-options"><td></td><td><a href="index.html" id="self-link">(link)</a></td></tr>
+<tr class="advanced-options"><td></td><td><input type="checkbox" id="metric-checkbox" onclick="clickMetric()"> Metric</input></td></tr>
+<tr class="advanced-options"><td></td><td><input type="checkbox" id="diagonal-checkbox" onclick="clickDiagonal()"> Sleep Diagonally</input></td></tr>
+<tr><td colspan="2"><div id="advanced-button-container">
+  <span id="advanced-button" onclick="toggleAdvanced()">Advanced &darr;</span>
+</div></td></tr>
+</table>
+
+
+</div>
+
+
+<table id="legend">
+<tr>
+<td id="usable-area-label" style="background: #B3E2A2; cursor: pointer" onmouseover="highlightTent()" onmouseout="resetHighlightStats()">Usable Area</td>
+<td id="compare-label" style="background: #E0B0E0; cursor: pointer" onmouseover="highlightCompare()" onmouseout="resetHighlightStats()">Compare</td>
+<td style="background: #ffff60">Sleeping Pad</td>
+<td style="background: lightblue">Sleeping Bag</td>
+<td style="background: lightgray">You!</td>
+</tr>
+</table>
+
+<canvas id="tent-side-canvas" width="400" height="200"></canvas>
+
+<table id="tent-stats">
+<tr class="title"><td class="none"></td><td>Extra Sleeping Room</td><td>Extra Headroom Length</td><td>Extra Headroom Width</td><td>Weight</td></tr>
+<tr style="background: #B3E2A2">
+<td id="tent-name-stats"></td>
+<td style="cursor: pointer" onmouseover="highlightTentSleepingLength()" onmouseout="resetHighlightStats()"><span id="excess-sleeping-length"></span><span class="units-abbrev">"</span></td>
+<td style="cursor: pointer" onmouseover="highlightTentHeadroomLength()" onmouseout="resetHighlightStats()"><span id="excess-headroom-length"></span><span class="units-abbrev">"</span></td>
+<td style="cursor: pointer" onmouseover="highlightTentHeadroomWidth()" onmouseout="resetHighlightStats()"><span id="excess-headroom-width"></span><span class="units-abbrev">"</span></td>
+<td><span id="weight"></span><span class="units-weight-abbrev"> oz</span></td></tr>
+
+<tr id="tent-notes-row" style="display: none"><td></td><td id="tent-notes" colspan="4"></td></tr>
+
+<tr id="compare-stats-row" style="background: #E0B0E0">
+<td id="tent-compare-name-stats"></td>
+<td style="cursor: pointer" onmouseover="highlightCompareTentSleepingLength()" onmouseout="resetHighlightStats()"><span id="compare-excess-sleeping-length"></span><span class="units-abbrev">"</span></td>
+<td style="cursor: pointer" onmouseover="highlightCompareTentHeadroomLength()" onmouseout="resetHighlightStats()"><span  id="compare-excess-headroom-length"></span><span class="units-abbrev">"</span></td>
+<td style="cursor: pointer" onmouseover="highlightCompareTentHeadroomWidth()" onmouseout="resetHighlightStats()"><span  id="compare-excess-headroom-width"></span><span class="units-abbrev">"</span></td>
+<td><span id="compare-weight"></span><span class="units-weight-abbrev"> oz</span></td></tr>
+
+<tr id="tent-compare-notes-row" style="display: none"><td></td><td id="tent-compare-notes" colspan="4"></td></tr>
+
+</table>
+<div id="estimated" style="text-align:center; margin-top: 0.5em; display: none">* estimated</div>
+
+<script type="text/javascript" src="tents.js"></script>
+<script type="text/javascript" src="input.js"></script>
+<script>
+  
+var gBrand = 'All brands';
+var gTentName = '';
+var gCompareTentName = '';
+function pickBrand() {
+  gBrand = document.getElementById("tent-brand-dropdown").value;
+  rebuildTentDropDown(true);
+}
+
+function rebuildTentDropDown(skip_redraw) {
+  var tentSelect = document.getElementById("tent-dropdown");
+  var tentBrandSelect = document.getElementById("tent-brand-dropdown");
+  var tentCompareSelect = document.getElementById("tent-compare-dropdown");
+  while (tentSelect.options.length > 0) {
+    tentSelect.remove(0);
+  }
+  while (tentBrandSelect.options.length > 0) {
+    tentBrandSelect.remove(0);
+  }
+  while (tentCompareSelect.options.length > 0) {
+    tentCompareSelect.remove(0);
+  }
+  var option = document.createElement("option");
+  option.value = "None";
+  option.text = "None";
+  tentCompareSelect.appendChild(option);
+  var option = document.createElement("option");
+  option.value = "All brands";
+  option.text = "All brands";
+  tentBrandSelect.appendChild(option);
+  for (i in brands) {
+    var option = document.createElement("option");
+    option.value = brands[i];
+    option.text = brandAbbreviation(brands[i]);
+    tentBrandSelect.appendChild(option);
+  }
+  tentBrandSelect.value = gBrand;
+  var tentsToShow = [];
+  for (i in gTents) {
+    var tent = gTents[i];
+    
+    if (gBrand != "All brands" && gBrand != tent.brand) {
+      continue;
+    }
+    
+    tentsToShow.push(i);
+  }
+  tentsToShow.sort(function(a, b) {
+    var aName = (gBrand == "All brands" ? brandAbbreviation(gTents[a].brand) + " " : "") + gTents[a].name;
+    var bName = (gBrand == "All brands" ? brandAbbreviation(gTents[b].brand) + " " : "") + gTents[b].name;
+    return aName.localeCompare(bName);
+  });
+  if (!tentsToShow.includes(gTentName)) {
+    var option = document.createElement("option");
+    option.value = gTentName;
+    option.text = brandAbbreviation(gTents[gTentName].brand) + " " + gTents[gTentName].name;
+    tentSelect.appendChild(option);
+  }
+  if (gCompareTentName && !tentsToShow.includes(gCompareTentName)) {
+    var option = document.createElement("option");
+    option.value = gCompareTentName;
+    option.text = brandAbbreviation(gTents[gCompareTentName].brand) + " " + gTents[gCompareTentName].name;
+    tentCompareSelect.appendChild(option);
+  }
+  for (var i in tentsToShow) {
+    var name = tentsToShow[i];
+    var option = document.createElement("option");
+    option.value = name;
+    option.text = (gBrand == "All brands" ? brandAbbreviation(gTents[name].brand) + " " : "") + gTents[name].name;
+    tentSelect.appendChild(option);
+
+    var option = document.createElement("option");
+    option.value = name;
+    option.text = (gBrand == "All brands" ? brandAbbreviation(gTents[name].brand) + " " : "") + gTents[name].name;
+    tentCompareSelect.appendChild(option);
+  }
+  tentSelect.value = gTentName;
+  tentCompareSelect.value = gCompareTentName;
+
+  if (!skip_redraw) {
+    drawFromSettings();
+  }
+}
+  
+var brands = new Set();
+for (i in gTents) {
+  brands.add(gTents[i].brand);
+}
+brands = Array.from(brands.values());
+brands.sort();
+  
+// Canvas is global.
+var gCanvasBottomPadding = 20;
+gCanvas = document.getElementById("tent-side-canvas");
+gCanvas.width = window.innerWidth - 20;
+gCanvas.height = gCanvas.width / 2 + gCanvasBottomPadding;
+gCanvas.addEventListener('mousemove', function(e) {
+  updateHover(e.offsetX, e.offsetY);
+  drawFromSettings();
+});
+
+var tentDropdown = document.getElementById("tent-dropdown");
+tentDropdown.value = "BA Copper Spur HV UL2";
+gTentName = "BA Copper Spur HV UL2";
+gCompareTentName = "";
+
+function toggleGeneric(element, show) {
+  var options = document.getElementsByClassName(element);
+  for (var i = 0; i < options.length; i++) {
+    var option = options[i];
+    if (show) {
+      option.style.display = "table-row";
+    } else {
+      option.style.display = "none";
+    }
+  }
+}
+
+function drawFromSettings(changed) {
+  profile = readProfile();
+
+  var name = document.getElementById("tent-dropdown").value;
+  var compareName = document.getElementById("tent-compare-dropdown").value;
+  if (changed) {
+    gTentName = name;
+    gCompareTentName = compareName;
+  }
+  gSetValues["tent-dropdown"] = name;
+  gSetValues["tent-compare-dropdown"] = compareName;
+  if (compareName == "None") {
+    compareName = false;
+  }
+
+  function handleGenericTent(tentName, assignName, rowClass, lengthEl, heightEl, widthEl) {
+    if (tentName == "Generic A-Frame") {
+      var tentLengthInches = checkInput(lengthEl, 50, 90);
+      var tentHeightInches = checkInput(heightEl, 24, 42);
+      var tentWidthInches = checkInput(widthEl, 20, 54);
+      
+      var headroomLength = tentLengthInches - 24;
+      var headroomWidth = tentWidthInches * 0.9 * (tentHeightInches - 36) / (tentHeightInches - 6);
+      if (tentHeightInches < 36) {
+        headroomLength = 0;
+        headroomWidth = 0;
+      }
+
+      gTents[assignName] = new Tent("Generic", assignName, OutlineType.Pyramid,
+          [[0,6], [0, tentHeightInches], [tentLengthInches, tentHeightInches], [tentLengthInches,6], [0,6]],
+          [[0,6], [tentWidthInches / 2, tentHeightInches], [tentWidthInches,6], [0,6]],
+          tentLengthInches - 24, headroomLength, headroomWidth)  // usable dimension
+          .setSideFootprint(12, tentLengthInches - 12)
+          .setFrontFootprint(6, tentWidthInches - 6)
+          .setRainflyWidth(0)
+          .setInteriorPeakWidth(tentLengthInches - 24)
+          .setIsTarp()
+          .setWeight(11.5)
+          .setPrice(100),
+
+      toggleGeneric(rowClass, true);
+      
+      return formatInches(tentLengthInches) + " x " +
+          formatInches(2 * Math.sqrt(tentWidthInches * tentWidthInches / 4 +
+                         (tentHeightInches - 12) * (tentHeightInches - 12)));
+    } else if (tentName == "Generic Dome") {
+      var tentLengthInches = checkInput(lengthEl, 50, 90);
+      var tentHeightInches = checkInput(heightEl, 37, 42);
+      var tentWidthInches = checkInput(widthEl, 20, 54);
+
+      function solveEllipse(a, b, y) {
+          a = a / 2;  // Radius is half of length.
+        return 2 * Math.sqrt(Math.abs((a * a) * (1 - (y * y) / (b * b))));
+      }
+      gTents[assignName] = new Tent("Generic", assignName, OutlineType.Dome,
+               [tentLengthInches, tentHeightInches],
+               [tentWidthInches, tentHeightInches],
+               solveEllipse(tentLengthInches, tentHeightInches, 12) * 0.9,
+               solveEllipse(tentLengthInches, tentHeightInches, 36) * 0.8,
+               solveEllipse(tentWidthInches, tentHeightInches, 36) * 1.1)
+          .setRainflyWidth(24);
+      toggleGeneric(rowClass, true);
+     } else if (tentName == "Generic Pyramid") {
+      var tentLengthInches = checkInput(lengthEl, 50, 100);
+      var tentHeightInches = checkInput(heightEl, 37, 49);
+      var tentWidthInches = checkInput(widthEl, 20, 64);
+
+      function solveTriangle(a, b, y) {
+        var m = b / (a / 2);
+        return a - 2 * y / m;
+      }
+      gTents[assignName] = new Tent("Generic", assignName, OutlineType.Pyramid,
+              [[0,0], [tentLengthInches / 2, tentHeightInches], [tentLengthInches, 0]],
+              [[0,0], [tentWidthInches * 1/2, tentHeightInches], [tentWidthInches,0]],
+              solveTriangle(tentLengthInches, tentHeightInches, 12) * 0.95,
+              solveTriangle(tentLengthInches, tentHeightInches, 36) * 0.95,
+              solveTriangle(tentWidthInches * 2/3, tentHeightInches, 36) * 0.95,
+              6, tentLengthInches - 6,
+              tentWidthInches * 1/3, tentWidthInches - 6)
+              //.setFrontInteriorPeakOffset(tentWidthInches * 1/3);
+      toggleGeneric(rowClass, true);
+    } else {
+      toggleGeneric(rowClass, false);
+    }
+  }
+
+  var aFrameSize = handleGenericTent(name, name, "generic-tent", "generic-tent-length-input", "generic-tent-height-input", "generic-tent-width-input");
+
+  // Put the compare generic tent in a separate name.
+  var compareAssignName = compareName;
+  if (compareName && compareName.startsWith("Generic ")) {
+    compareAssignName += " Compare";
+  }
+  var compareAFrameSize = handleGenericTent(compareName, compareAssignName, "generic-compare-tent", "generic-compare-tent-length-input", "generic-compare-tent-height-input", "generic-compare-tent-width-input");
+
+  drawTent(
+      name, compareAssignName, profile);
+
+  var usable = document.getElementById("usable-area-label");
+  if (usable) {
+    usable.innerHTML = name + " Usable Area";
+  }
+
+  var usable = document.getElementById("compare-label");
+  if (compareName) {
+    usable.style.display = "table-cell";
+    usable.innerHTML = compareName + " Usable Area";
+  } else {
+    usable.style.display = "none";
+  }
+
+  var estimated = false;
+  var tent = gTents[name];
+  [headLength, headWidth] = tent.getExtraHeadWidthsAtHeight(
+      profile, profile.sittingHeight);
+  sleepingLength = tent.getLayingWidthAtHeight(profile.sleepingHeights());
+
+  document.getElementById("tent-name-stats").innerHTML = outputTentName(tent);
+  if (name == "Generic A-Frame") {
+    document.getElementById("tent-name-stats").innerHTML += "<br/>" + aFrameSize;
+  }
+  document.getElementById("excess-sleeping-length").innerHTML = outputLength(
+      sleepingLength - profile.sleepingLength());
+  document.getElementById("excess-headroom-length").innerHTML =
+      outputLength(headLength);
+  document.getElementById("excess-headroom-width").innerHTML =
+      outputLength(headWidth);
+  if (tent.weight) {
+    document.getElementById("weight").innerHTML = outputWeight(tent.weight);
+  } else {
+    document.getElementById("weight").innerHTML = ""; 
+  }
+  if (tent.estimated) {
+    estimated = true;
+    document.getElementById("tent-name-stats").innerHTML += " *";
+    document.getElementById("excess-sleeping-length").innerHTML += " *";
+    document.getElementById("excess-headroom-length").innerHTML += " *";
+    document.getElementById("excess-headroom-width").innerHTML += " *";
+  }
+  if (tent.panelPullouts) {
+    document.getElementById("tent-name-stats").innerHTML += " (with pullouts)";
+  }
+  if (tent.note) {
+    document.getElementById("tent-notes-row").style = "display: table-row";
+    document.getElementById("tent-notes").innerHTML = tent.note;
+  } else {
+    document.getElementById("tent-notes-row").style = "display: none";
+  }
+  if (compareName) {
+    var tent = gTents[compareAssignName];
+    [headLength, headWidth] = tent.getExtraHeadWidthsAtHeight(profile, profile.sittingHeight);
+    sleepingLength = tent.getLayingWidthAtHeight(profile.sleepingHeights());
+    document.getElementById("tent-compare-name-stats").innerHTML = outputTentName(tent);
+    if (compareName == "Generic A-Frame") {
+      document.getElementById("tent-compare-name-stats").innerHTML += "<br/>" + compareAFrameSize;
+    }
+    document.getElementById("compare-excess-sleeping-length").innerHTML =
+        outputLength(sleepingLength - profile.sleepingLength());
+    document.getElementById("compare-excess-headroom-length").innerHTML =
+        outputLength(headLength);
+    document.getElementById("compare-excess-headroom-width").innerHTML =
+        outputLength(headWidth);
+    if (tent.weight) {
+      document.getElementById("compare-weight").innerHTML = outputWeight(tent.weight);
+    } else {
+      document.getElementById("compare-weight").innerHTML = "";
+    }
+    var el = document.getElementById("compare-stats-row");
+    if (el) {
+      el.style.display = "table-row";
+    }
+    if (tent.estimated) {
+      estimated = true;
+      document.getElementById("tent-compare-name-stats").innerHTML += " *";
+      document.getElementById("compare-excess-sleeping-length").
+          innerHTML += " *";
+      document.getElementById("compare-excess-headroom-length").
+          innerHTML += " *";
+      document.getElementById("compare-excess-headroom-width").
+          innerHTML += " *";
+    }
+    if (tent.panelPullouts) {
+      document.getElementById("tent-compare-name-stats").innerHTML +=
+          " (with pullouts)";
+    }
+    if (tent.note) {
+      document.getElementById("tent-compare-notes-row").style = "display: table-row";
+      document.getElementById("tent-compare-notes").innerHTML = tent.note;
+    } else {
+      document.getElementById("tent-compare-notes-row").style = "display: none";
+    }
+  } else {
+    var el = document.getElementById("compare-stats-row");
+    if (el) {
+      el.style.display = "none";
+    }
+  }
+  if (estimated) {
+    document.getElementById("estimated").style.display = "block";
+  } else {
+    document.getElementById("estimated").style.display = "none";
+  }
+
+  if (changed) {
+    writeCookie();
+  }
+
+  // Set the self-link.
+  var link = window.location.origin + window.location.pathname;
+  link += "?tent-dropdown=" + name;
+  var linkElements = [];
+  if (name.startsWith("Generic ")) {
+    linkElements = linkElements.concat(["generic-tent-length-input",
+                                        "generic-tent-width-input",
+                                        "generic-tent-height-input"]);
+  }
+  if (compareName) {
+    linkElements.push("tent-compare-dropdown");
+    if (compareName.startsWith("Generic ")) {
+      linkElements = linkElements.concat(["generic-compare-tent-length-input",
+                                          "generic-compare-tent-width-input",
+                                          "generic-compare-tent-height-input"]);
+    }
+  }
+  linkElements.forEach(el => {
+    if (gSetValues[el]) {
+      link += "&" + el + "=" + gSetValues[el];
+    }
+  });
+  var linkEl = document.getElementById("self-link");
+  if (linkEl) {
+    linkEl.href = link;
+  }
+}
+
+function highlightTent() {
+  gHighlightStats = HighlightStats.USABLE_AREA;
+  drawFromSettings(false);
+}
+
+function highlightCompare() {
+  gHighlightStats = HighlightStats.COMPARE_USABLE_AREA;
+  drawFromSettings(false);
+}
+
+function highlightTentSleepingLength() {
+  gHighlightStats = HighlightStats.SLEEPING_LENGTH;
+  drawFromSettings(false);
+}
+
+function highlightCompareTentSleepingLength() {
+  gHighlightStats = HighlightStats.COMPARE_SLEEPING_LENGTH;
+  drawFromSettings(false);
+}
+
+function highlightTentHeadroomLength() {
+  gHighlightStats = HighlightStats.HEADROOM_LENGTH;
+  drawFromSettings(false);
+}
+
+function highlightCompareTentHeadroomLength() {
+  gHighlightStats = HighlightStats.COMPARE_HEADROOM_LENGTH;
+  drawFromSettings(false);
+}
+
+function highlightTentHeadroomWidth() {
+  gHighlightStats = HighlightStats.HEADROOM_WIDTH;
+  drawFromSettings(false);
+}
+
+function highlightCompareTentHeadroomWidth() {
+  gHighlightStats = HighlightStats.COMPARE_HEADROOM_WIDTH;
+  drawFromSettings(false);
+}
+
+function resetHighlightStats() {
+  gHighlightStats = false;
+  drawFromSettings(false);
+}
+
+rebuildTentDropDown(true);
+
+decodeCookie();
+decodeGetParams();
+
+drawFromSettings(false);
+addInputListeners(function(e) { drawFromSettings(true); });
+ 
+</script>
+
+</body>
+</html>
+

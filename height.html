@@ -1,0 +1,112 @@
+<html>
+<head>
+<title>Fit My Tent</title>
+<link rel="stylesheet" href="tent_style.css">
+</head>
+<body>
+
+<div class="header">
+<a href="index.html" class="title-icon">&#x25b3;</a><a href="index.html" class="title">Fit my Tent</a>
+<a href="help.html" class="menu">Help</a>
+<a href="data.html" class="menu">Data</a>
+<a href="about.html" class="menu">About</a>
+<a href="recommend.html" class="menu">Recommend</a>
+<a href="index.html" class="menu">Home</a>
+</div>
+  
+<div id="heights"></div>
+
+<script type="text/javascript" src="tents.js"></script>
+<script type="text/javascript" src="input.js"></script>
+<script>
+
+// Remove generic tents.
+for (var i in gTents) {
+  var tent = gTents[i];
+  if (tent.brand == "Generic") {
+    delete gTents[i];
+  }
+}
+
+function bisect(name) {
+  var tent = gTents[name];
+  var h_min = 36;
+  var h_max = 96;
+  var h_mid;
+  var fits_head = false;
+  var fits_sleep = false;
+  for (var its = 0; its < 20; its++) {
+    h_mid = (h_min + h_max) / 2;
+    if (Math.abs(h_min - h_max) < 0.1) {
+      break;
+    }
+    var profile = new Profile(h_mid, 2, 2.5,
+                              h_mid * 0.15, h_mid * 0.52, h_mid * 0.25);
+    var effectiveLength = tent.effectiveLength(profile);
+    var length_target = profile.sleepingLength();
+
+    var widths = tent.getExtraHeadWidthsAtHeight(profile, profile.sittingHeight);
+    var min_width = Math.min(widths[0], widths[1]) + (tent.walls - 1) * 2;
+    var width_target = 0;
+    var extra_headroom = min_width - width_target;
+    var extra_sleep = effectiveLength - length_target;
+    var fits = (extra_headroom > 0) && (extra_sleep > 0);
+    //console.log(its + ": " + h_mid + " (" + h_min + "/" + h_max + ")");
+    //console.log("  " + effectiveLength + " > " + length_target);
+    //console.log("  " + min_width + " > " + width_target);
+    if (fits) {
+      h_min = h_mid;
+    } else {
+      h_max = h_mid;
+    }
+    if (extra_headroom > extra_sleep) {
+      fits_head = true;
+      fits_sleep = false;
+    } else {
+      fits_head = false;
+      fits_sleep = true;
+    }
+  }
+  h_mid = Math.round(h_mid * 10) / 10;
+  console.log(name + ": h_mid " + h_mid);
+  console.log("  effectiveLength " + effectiveLength + " > length_target " + length_target);
+  console.log("  min_width " + min_width + " > width_target " + width_target);
+  console.log("  fits_head " + fits_head + " fits_sleep " + fits_sleep);
+  return [h_mid, fits_head, fits_sleep];
+}
+ 
+var heights = {};
+var names = [];
+for (var i in gTents) {
+  names.push(i);
+  heights[i] = bisect(i);
+}
+names.sort(function(a, b) { return heights[a][0] - heights[b][0]; });
+console.log(names);
+
+var html = "<table class=\"data-table\"><tr><td class=\"title\">Tent</td><td class=\"title\" colspan=\"2\">Recommended Height</td><td class=\"title\">Limiting factor</td></tr>";
+for (var i in names) {
+  var name = names[i];
+  var tent = gTents[name];
+  html += "<tr><td class=\"name\"><a href=\"index.html?tent-dropdown=" + name + "\">" + name + "</a</td><td>" + formatInches(heights[name][0]) + "</td><td>";
+  if (tent.panelPullouts && heights[name][1]) {
+    gUsePanelPullouts = false;
+    html += " (" + formatInches(bisect(name)[0]) + " no pullouts)";
+    gUsePanelPullouts = true;
+  }
+  html += "</td><td>";
+  if (heights[name][1]) {
+    html += "Sleeping length";
+  } else if (heights[name][2]) {
+    html += "Headroom";
+  }
+  html += "</td></tr>";
+}
+html += "</table>"
+document.getElementById("heights").innerHTML = html;
+
+</script>
+
+</body>
+</html>
+
