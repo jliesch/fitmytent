@@ -1274,6 +1274,19 @@ var gTents = {
              .setWeight(13)
              .setPrice(185)
              .setUrl("https://www.sixmoondesigns.com/products/deschutes"),
+  "SMD Gatewood Cape (114cm)":
+    new Tent("Six Moon Designs", "Gatewood Cape (114cm)", OutlineType.Pyramid,
+             [[0,13], [52.5, 45], [105, 13], [0,13]],
+             [[0,13], [24.375,45], [65,6], [0,13]],
+             83.8, 26.75, 10)  // usable dimension
+             .setSideFootprint(10.6, 94.4)
+             .setFrontFootprint(24.375, 65)
+             .setFrontInteriorPeakOffset(24.375)
+             .setPanelPullouts()
+             .setIsTarp()
+             .setWeight(11)
+             .setPrice(155)
+             .setUrl("https://www.sixmoondesigns.com/products/gatewood-cape"),
   "SMD Lunar Solo":
     new Tent("Six Moon Designs", "Lunar Solo", OutlineType.Pyramid,
              [[7.75,0], [0,6], [52.5, 48], [105,6], [98.25, 0]],
