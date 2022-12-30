@@ -1286,6 +1286,7 @@ var gTents = {
              .setIsTarp()
              .setWeight(11)
              .setPrice(155)
+             .setEstimated()
              .setUrl("https://www.sixmoondesigns.com/products/gatewood-cape"),
   "SMD Lunar Solo":
     new Tent("Six Moon Designs", "Lunar Solo", OutlineType.Pyramid,
