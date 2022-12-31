@@ -1496,7 +1496,19 @@ var gTents = {
              .setEstimated()
              .setPrice(749)
              .setUrl("https://zpacks.com/products/duplex-tent"),
-
+  "Zpacks Plex Solo":
+    new Tent("Zpacks", "Plex Solo", OutlineType.Pyramid,
+             [[5,0], [0,6], [50, 52], [100,6], [95, 0]],
+             [[18.75,0], [0,10], [18.75,52], [62,6], [56.75,0]],
+             78, 31, 13.5)
+             .setSideFootprint(5, 95)
+             .setFrontFootprint(18.75, 56.75)
+             .setPanelPullouts()
+             .setFrontInteriorPeakOffset(18.75)
+             .setWeight(13.9)
+             .setPrice(599)
+             .setEstimated()
+             .setUrl("https://zpacks.com/products/plexsolo-tent"),
 };
 
 const HighlightStats = {
