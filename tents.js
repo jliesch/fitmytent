@@ -503,8 +503,8 @@ class Tent {
     var headXAt12 = (this.maxLength + this.sleepingLength) / 2;
     if (headXAt12 > this.layingLengthEnd) {
       var diff = headXAt12 - this.layingLengthEnd;
-      footXAt12 -= diff;
-      headXAt12 -= diff;
+      footXAt12 -= diff / 2;
+      headXAt12 -= diff / 2;
     }
     if (gUsePanelPullouts && this.panelPullouts) {
       headXAt12 += 2;
@@ -984,6 +984,19 @@ var gTents = {
              .setWeight(35)
              .setPrice(399.95)
              .setUrl("https://www.bigagnes.com/Tiger-Wall-UL2"),
+  "Bonfus Duos 2p":
+    new Tent("Bonfus", "Duos 2p", OutlineType.Pyramid,
+             [[15,0], [0,6], [58, 50], [116,6], [101, 0]],
+             [[24,0], [0,6], [24, 50], [69, 50], [93,6], [69,0]],
+             90.5, 32, 46)
+             .setSideFootprint(15, 101)
+             .setFrontFootprint(24, 69)
+             .setFrontInteriorPeakWidth(53)
+             .setWeight(21.0)
+             .setPrice(699)
+             .setEstimated()
+             .addNote("Measured using panel pullouts")
+             .setUrl("https://zpacks.com/products/duplex-tent"),
   "X-Mid 1p Inner":
     new Tent("Durston", "X-Mid 1p Inner", OutlineType.Pyramid,
              [[0,0], [21.625, 43], [64.875, 43], [86.5, 0]],
