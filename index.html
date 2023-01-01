@@ -407,10 +407,8 @@ function drawFromSettings(changed) {
       document.getElementById("tent-compare-notes-row").style = "display: none";
     }
   } else {
-    var el = document.getElementById("compare-stats-row");
-    if (el) {
-      el.style.display = "none";
-    }
+    document.getElementById("compare-stats-row").style.display = "none";
+    document.getElementById("tent-compare-notes-row").style = "display: none";
   }
   if (estimated) {
     document.getElementById("estimated").style.display = "block";
