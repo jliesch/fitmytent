@@ -986,11 +986,11 @@ var gTents = {
              .setUrl("https://www.bigagnes.com/Tiger-Wall-UL2"),
   "Bonfus Duos 2p":
     new Tent("Bonfus", "Duos 2p", OutlineType.Pyramid,
-             [[15,0], [0,6], [58, 50], [116,6], [101, 0]],
-             [[24,0], [0,6], [24, 50], [69, 50], [93,6], [69,0]],
-             90.5, 32, 46)
-             .setSideFootprint(15, 101)
-             .setFrontFootprint(24, 69)
+             [[14.5,0], [0,6], [58, 50], [116,6], [101.5, 0]],
+             [[28,0], [0,6], [24, 50], [77, 50], [101,6], [73,0]],
+             87, 32, 45)
+             .setSideFootprint(14.5, 101.5)
+             .setFrontFootprint(28, 73)
              .setFrontInteriorPeakWidth(53)
              .setWeight(21.0)
              .setPrice(699)
