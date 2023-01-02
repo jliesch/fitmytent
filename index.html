@@ -193,6 +193,11 @@
       <td class="compare-tent-column"><span id="compare-weight"></span><span class="units-weight-abbrev"> oz</span></td>
     </tr>
     <tr>
+      <th>Price</th>
+      <td><span id="price"></span></td>
+      <td class="compare-tent-column"><span id="compare-price"></span></td>
+    </tr>
+    <tr>
       <th>Manufacturer Link</th>
       <td><span id="manufacturer-link"></span></td>
       <td class="compare-tent-column"><span id="compare-manufacturer-link"></span></td>
@@ -460,6 +465,11 @@ function drawFromSettings(changed) {
   } else {
     document.getElementById("weight").innerHTML = ""; 
   }
+  if (tent.price) {
+    document.getElementById("price").innerHTML = "$" + tent.price;
+  } else {
+    document.getElementById("price").innerHTML = ""; 
+  }
   if (tent.url) {
     document.getElementById("manufacturer-link").innerHTML = "<a href=\"" + tent.url + "\" target=\"poup\">" + tent.brand + "</a>";
   }
@@ -498,6 +508,11 @@ function drawFromSettings(changed) {
       document.getElementById("compare-weight").innerHTML = outputWeight(tent.weight);
     } else {
       document.getElementById("compare-weight").innerHTML = "";
+    }
+    if (tent.price) {
+      document.getElementById("compare-price").innerHTML = "$" + tent.price;
+    } else {
+      document.getElementById("compare-price").innerHTML = ""; 
     }
     if (tent.url) {
       document.getElementById("compare-manufacturer-link").innerHTML = "<a href=\"" + tent.url + "\" target=\"poup\">" + tent.brand + "</a>";
