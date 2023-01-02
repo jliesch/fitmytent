@@ -997,6 +997,33 @@ var gTents = {
              .setEstimated()
              .addNote("Measured using panel pullouts")
              .setUrl("https://bonfus.com/product/duos-2p-2/"),
+  "Bonfus Middus 1p":
+    new Tent("Bonfus", "Middus 1p", OutlineType.Pyramid,
+             [[0,6], [56.1, 55], [112.2, 6], [0,6]],
+             [[0,6], [23.5,55], [65,6], [0,6]],
+             88, 38, 15)  // usable dimension
+             .setSideFootprint(12.1, 100.1)
+             .setFrontFootprint(23.5, 65)
+             .setFrontInteriorPeakOffset(23.5)
+             .setPanelPullouts()
+             .setIsTarp()
+             .setEstimated()
+             .setWeight(9.7)
+             .setPrice(509)
+             .setUrl("https://bonfus.com/product/middus-1p/"),
+  "Bonfus Middus 2p":
+    new Tent("Bonfus", "Middus 2p", OutlineType.Pyramid,
+             [[0,6], [55, 54], [110, 6], [0,6]],
+             [[0,6], [40,54], [80,6], [0,6]],
+             87, 37, 26)  // usable dimension
+             .setSideFootprint(11.5, 98.5)
+             .setFrontFootprint(0, 80)
+             .setPanelPullouts()
+             .setIsTarp()
+             .setEstimated()
+             .setWeight(14.6)
+             .setPrice(595)
+             .setUrl("https://bonfus.com/product/middus-2p/"),
   "Bonfus Solus 1p":
     new Tent("Bonfus", "Solus 1p", OutlineType.Pyramid,
              [[14.5,0], [0,6], [58, 50], [116,6], [101.5, 0]],
