@@ -996,7 +996,22 @@ var gTents = {
              .setPrice(699)
              .setEstimated()
              .addNote("Measured using panel pullouts")
-             .setUrl("https://zpacks.com/products/duplex-tent"),
+             .setUrl("https://bonfus.com/product/duos-2p-2/"),
+  "Bonfus Solus 1p":
+    new Tent("Bonfus", "Solus 1p", OutlineType.Pyramid,
+             [[14.5,0], [0,6], [58, 50], [116,6], [101.5, 0]],
+             [[27.5,0], [0,6], [24, 50], [54, 35], [66,6], [57.5,0]],
+             87, 32, 28)
+             .setSideFootprint(14.5, 101.5)
+             .setFrontFootprint(27.5, 57.5)
+             .setFrontInteriorPeakWidth(37)
+             .setFrontInteriorPeakOffset(24)
+             .setFrontInteriorPeakWidth(0)
+             .setWeight(16.6)
+             .setPrice(679)
+             .setEstimated()
+             .addNote("Measured using panel pullouts")
+             .setUrl("https://bonfus.com/product/solus-1p/"),
   "X-Mid 1p Inner":
     new Tent("Durston", "X-Mid 1p Inner", OutlineType.Pyramid,
              [[0,0], [21.625, 43], [64.875, 43], [86.5, 0]],
