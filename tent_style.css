@@ -1,3 +1,5 @@
+@import "https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css";
+
 html, body {
   padding: 0;
   margin: 0;
@@ -19,6 +21,33 @@ table {
   border-collapse: collapse;
 }
 
+table td.shrink {
+  width:0.1%;
+  white-space: nowrap;
+}
+
+.tent-background {
+  background: #B3E2A2;
+}
+.compare-tent-background {
+  background: #E0B0E0;
+}
+
+.table.is-borderless,
+.table.is-borderless tr,
+.table.is-borderless td {
+  border: none;
+  border-width: 0px;
+}
+
+.table.is-vertically-aligned td {
+  vertical-align: middle;
+}
+
+.table.is-no-padding td {
+  padding-left: 0.2em;
+  padding-right: 0.2em;
+}
 canvas {
   margin: 0;
   padding: 0;
@@ -28,14 +57,14 @@ div.header a {
   text-decoration: none;
   color: #666;
 }
-div.header a.title-icon {
+a.title-icon {
   margin-left: 2em;
   font-size: 1.5em;
   margin-right: 0.5em;
   font-weight: bold;
   font-family: copperplate;
 }
-div.header a.title {
+a.title {
   font-size: 1.8em;
   font-weight: bold;
   font-family: copperplate;
@@ -97,9 +126,6 @@ body a:hover {
   margin-left: 0.25em;
   margin-right: 1.5em;
 }
-#tent-brand-dropdown {
-  background: lightgray;
-}
 #tent-dropdown {
   background: #B3E2A2;
 }
@@ -110,21 +136,6 @@ body a:hover {
 #options tr.generic-compare-tent,
 #options tr.advanced-options {
   display: none;
-}
-
-#advanced-button-container {
-  padding: 0.25em 0;
-  text-align: center;
-}
-#advanced-button-container span:hover {
-  color: #c66;
-}
-#advanced-button {
-  color: #666;
-  font-weight: bold;
-  font-size: 0.9em;
-  cursor: pointer;
-  margin-right: 2em;
 }
 
 #tent-side-canvas {
@@ -141,44 +152,6 @@ body a:hover {
   color: #333;
   font-size: 0.9em;
   font-weight: bold;
-}
-
-#tent-stats {
-  border: 0;
-  margin-left: auto;
-  margin-right: auto;
-}
-#tent-stats tr.title td.none {
-  border: 0;
-  background-color: transparent;
-}
-#tent-stats tr.title td {
-  font-weight: bold;
-  background-color: lightgray;
-}
-#tent-stats #tent-notes-row {
-  background-color: #B3E2A2;
-  border: 1px solid gray;
-}
-#tent-stats #tent-compare-notes-row {
-  background-color: #E0B0E0;
-  border: 1px solid gray;
-}
-#tent-stats #tent-notes-row td,
-#tent-stats #tent-compare-notes-row td {
-  border-left: 0px none;
-  border-right: 0px none;
-}
-#tent-stats #tent-name-stats,
-#tent-stats #tent-compare-name-stats {
-  font-weight: bold;
-}
-#tent-stats td {
-  border: 1px solid gray;
-  padding: 0.5em 1em;
-  color: #333;
-  font-size: 0.9em;
-  text-align: center;
 }
 
 table.data-table {

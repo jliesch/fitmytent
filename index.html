@@ -5,94 +5,197 @@
 </head>
 <body>
 
-<div class="header">
-<a href="index.html" class="title-icon">&#x25b3;</a><a href="index.html" class="title">Fit my Tent</a>
-<a href="help.html" class="menu">Help</a>
-<a href="data.html" class="menu">Data</a>
-<a href="about.html" class="menu">About</a>
-<a href="recommend.html" class="menu">Recommend</a>
-<a href="index.html" class="menu">Home</a>
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item title" href="index.html">
+      &#x25b3; Fit my Tent
+    </a>
+  </div>
+  
+  <div class="navbar-menu is-active">
+    <div class="navbar-end">
+      <a href="index.html" class="navbar-item">Home</a>
+      <a href="recommend.html" class="navbar-item">Recommend</a>
+      <a href="about.html" class="navbar-item">About</a>
+      <a href="data.html" class="navbar-item">Data</a>
+      <a href="help.html" class="navbar-item">Help</a>
+    </div>
+  </div>
+</nav>
+
+<section class="section">
+  <div class="panel" style="width: 50%">
+    <p class="panel-heading">
+      Tent Explorer
+    </p>
+
+    <div class="panel-block">
+      <p class="control">
+        <table class="table is-borderless is-vertically-aligned is-no-padding">
+          <tr>
+            <td></td>
+            <td colspan="2"><div class="select"><select name="tent-brand-dropdown" id="tent-brand-dropdown" onchange="pickBrand()"></select></div></td>
+          </tr>
+
+          <tr>
+            <td><label class="label is-small">Tent</label></td>
+            <td colspan="2"><div class="select"><select name="tent-dropdown" id="tent-dropdown" onchange="drawFromSettings(true)"></select></div></td>
+          </tr>
+
+          <tr class="generic-tent">
+            <td><label class="label is-small">Tent Length</label></td>
+            <td class="shrink"><input type="number" id="generic-tent-length-input" class="input input-length" style="width: 6em" value=""></td>
+            <td><label class="label units is-small">inches</label></td>
+          </tr>
+          <tr class="generic-tent">
+            <td><label class="label is-small">Tent Width</label></td>
+            <td class="shrink"><input type="number" id="generic-tent-width-input" class="input input-length" style="width: 6em" value=""></td>
+            <td><label class="label units is-small">inches</label></td>
+          </tr>
+          <tr class="generic-tent">
+            <td><label class="label is-small">Tent Height</label></td>
+            <td class="shrink"><input type="number" id="generic-tent-height-input" class="input input-length" style="width: 6em" value=""></td>
+            <td><label class="label units is-small">inches</label></td>
+          </tr>
+
+          <tr>
+            <td><label class="label is-small">Comparison Tent</label></td>
+            <td colspan="2"><div class="select"><select name="tent-compare-dropdown" id="tent-compare-dropdown" onchange="drawFromSettings(true)"><option>None</option></div></select>
+          </td></tr>
+
+          <tr class="generic-compare-tent">
+            <td><label class="label is-small">Tent Length</label></td>
+            <td class="shrink"><input type="number" id="generic-compare-tent-length-input" class="input input-length" style="width: 6em" value=""></td>
+            <td><label class="label units is-small">inches</label></td>
+          </tr>
+          <tr class="generic-compare-tent">
+            <td><label class="label is-small">Tent Width</label></td>
+            <td class="shrink"><input type="number" id="generic-compare-tent-width-input" class="input input-length" style="width: 6em" value=""></td>
+            <td><label class="label units is-small">inches</label></td>
+          </tr>
+          <tr class="generic-compare-tent">
+            <td><label class="label is-small">Tent Height</label></td>
+            <td class="shrink"><input type="number" id="generic-compare-tent-height-input" class="input input-length" style="width: 6em" value=""></td>
+            <td><label class="label units is-small">inches</label></td>
+          </tr>
+
+          <tr>
+            <td><label class="label is-small">Your Height</label></td>
+            <td class="shrink"><input class="input input-length" type="number" id="height-input" style="width: 6em"></td>
+            <td><label class="label units is-small">inches</label></td>
+          </tr>
+
+          <tr class="advanced-options" style="display: none">
+            <td><label class="label is-small">Sitting Height</label></td>
+            <td class="shrink"><input class="input input-length" type="number" id="sitting-height-input" style="width: 6em"></td>
+            <td><label class="label units is-small">inches</label></td>
+          </tr>
+
+          <tr class="advanced-options" style="display: none">
+            <td><label class="label is-small">Shoulder Width</label></td>
+            <td class="shrink"><input class="input input-length" type="number" id="shoulder-width-input" style="width: 6em"></td>
+            <td><label class="label units is-small">inches</label></td>
+          </tr>
+
+          <tr class="advanced-options" style="display: none">
+            <td><label class="label is-small">Foot Length</label></td>
+            <td class="shrink"><input class="input input-length" type="number" id="foot-length-input" style="width: 6em"></td>
+            <td><label class="label units is-small">inches</label></td>
+          </tr>
+
+          <tr class="advanced-options" style="display: none">
+            <td><label class="label is-small">Sleeping Bag Loft</label></td>
+            <td class="shrink"><input class="input input-length" type="number" id="loft-input" style="width: 6em"></td>
+            <td><label class="label units is-small">inches</label></td>
+          </tr>
+
+          <tr class="advanced-options" style="display: none">
+            <td><label class="label is-small">Sleeping Pad Height</label></td>
+            <td class="shrink"><input class="input input-length" type="number" id="pad-height-input" style="width: 6em"></td>
+            <td><label class="label units is-small">inches</label></td>
+          </tr>
+
+          <tr class="advanced-options" style="display: none">
+            <td></td>
+            <td colspan="2"><a href="index.html" id="self-link">(link)</a></td>
+          </tr>
+
+          <tr class="advanced-options" style="display: none">
+            <td></td>
+            <td colspan="2"><input type="checkbox" id="metric-checkbox" onclick="clickMetric()"> Metric</input></td>
+          </tr>
+          <tr class="advanced-options" style="display: none">
+            <td></td>
+            <td colspan="2"><input type="checkbox" id="diagonal-checkbox" onclick="clickDiagonal()"> Sleep Diagonally</input></td>
+          </tr>
+
+          <tr>
+            <td></td>
+            <td colspan="2"><button class="button is-small is-rounded" onclick="toggleAdvanced()"><span id="advanced-button" >Advanced &darr;</span></button></td>
+          </tr>
+        </table>
+
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<div class="container">
+  <table id="legend">
+  <tr>
+  <td id="usable-area-label" style="background: #B3E2A2; cursor: pointer" onmouseover="highlightTent()" onmouseout="resetHighlightStats()">Usable Area</td>
+  <td id="compare-label" style="background: #E0B0E0; cursor: pointer" onmouseover="highlightCompare()" onmouseout="resetHighlightStats()">Compare</td>
+  <td style="background: #ffff60">Sleeping Pad</td>
+  <td style="background: lightblue">Sleeping Bag</td>
+  <td style="background: lightgray">You!</td>
+  </tr>
+  </table>
 </div>
-
-<div id="options">
-<table>
-<tr>
-  <td></td>
-  <td class="value"><select name="tent-brand-dropdown" id="tent-brand-dropdown" onchange="pickBrand()"></select></td>
-</tr>
-<tr><td class="label">Tent:</td>
-  <td class="value">
-  <select name="tent-dropdown" id="tent-dropdown" onchange="drawFromSettings(true)"></select>
-  </td>
-</tr>
-
-<tr class="generic-tent"><td class="label">Tent Length:</td><td class="value"><input type="number" id="generic-tent-length-input" class="input-length" value=""> <span class="units">inches</span></td></tr>
-<tr class="generic-tent"><td class="label">Tent Width:</td><td class="value"><input type="number" id="generic-tent-width-input" class="input-length" value=""> <span class="units">inches</span></td></tr>
-<tr class="generic-tent"><td class="label">Tent Height:</td><td class="value"><input type="number" id="generic-tent-height-input" class="input-length" value=""> <span class="units">inches</span></td></tr>
-
-<tr><td class="label">Compare Tent:</td><td class="value">
-  <select name="tent-compare-dropdown" id="tent-compare-dropdown" onchange="drawFromSettings(true)"><option>None</option>
-  </select>
-</td></tr>
-
-<tr class="generic-compare-tent"><td class="label">Tent Length:</td><td class="value"><input type="number" id="generic-compare-tent-length-input" class="input-length" value=""> <span class="units">inches</span></td></tr>
-<tr class="generic-compare-tent"><td class="label">Tent Width:</td><td class="value"><input type="number" id="generic-compare-tent-width-input" class="input-length" value=""> <span class="units">inches</span></td></tr>
-<tr class="generic-compare-tent"><td class="label">Tent Height:</td><td class="value"><input type="number" id="generic-compare-tent-height-input" class="input-length" value=""> <span class="units">inches</span></td></tr>
-
-<tr><td class="label">Your Height:</td><td class="value"><input type="number" id="height-input" class="input-length"> <span class="units">inches</span></td></tr>
-
-<tr class="advanced-options"><td class="label">Sitting Height:</td><td class="value"><input type="number" id="sitting-height-input" class="input-length"> <span class="units">inches</span></td></tr>
-<tr class="advanced-options"><td class="label">Shoulder Width:</td><td class="value"><input type="number" id="shoulder-width-input" class="input-length"> <span class="units">inches</span></td></tr>
-<tr class="advanced-options"><td class="label">Foot Length:</td><td class="value"><input type="number" id="foot-length-input" class="input-length"> <span class="units">inches</span></td></tr>
-<tr class="advanced-options"><td class="label">Sleeping Bag Loft:</td><td class="value"><input type="number" id="loft-input" class="input-length"> <span class="units">inches</span></td></tr>
-<tr class="advanced-options"><td class="label">Sleeping Pad Height:</td><td class="value"><input type="number" id="pad-height-input" class="input-length"> <span class="units">inches</span></td></tr>
-
-<tr class="advanced-options"><td></td><td><a href="index.html" id="self-link">(link)</a></td></tr>
-<tr class="advanced-options"><td></td><td><input type="checkbox" id="metric-checkbox" onclick="clickMetric()"> Metric</input></td></tr>
-<tr class="advanced-options"><td></td><td><input type="checkbox" id="diagonal-checkbox" onclick="clickDiagonal()"> Sleep Diagonally</input></td></tr>
-<tr><td colspan="2"><div id="advanced-button-container">
-  <span id="advanced-button" onclick="toggleAdvanced()">Advanced &darr;</span>
-</div></td></tr>
-</table>
-
-
-</div>
-
-
-<table id="legend">
-<tr>
-<td id="usable-area-label" style="background: #B3E2A2; cursor: pointer" onmouseover="highlightTent()" onmouseout="resetHighlightStats()">Usable Area</td>
-<td id="compare-label" style="background: #E0B0E0; cursor: pointer" onmouseover="highlightCompare()" onmouseout="resetHighlightStats()">Compare</td>
-<td style="background: #ffff60">Sleeping Pad</td>
-<td style="background: lightblue">Sleeping Bag</td>
-<td style="background: lightgray">You!</td>
-</tr>
-</table>
 
 <canvas id="tent-side-canvas" width="400" height="200"></canvas>
 
-<table id="tent-stats">
-<tr class="title"><td class="none"></td><td>Extra Sleeping Room</td><td>Extra Headroom Length</td><td>Extra Headroom Width</td><td>Weight</td></tr>
-<tr style="background: #B3E2A2">
-<td id="tent-name-stats"></td>
-<td style="cursor: pointer" onmouseover="highlightTentSleepingLength()" onmouseout="resetHighlightStats()"><span id="excess-sleeping-length"></span><span class="units-abbrev">"</span></td>
-<td style="cursor: pointer" onmouseover="highlightTentHeadroomLength()" onmouseout="resetHighlightStats()"><span id="excess-headroom-length"></span><span class="units-abbrev">"</span></td>
-<td style="cursor: pointer" onmouseover="highlightTentHeadroomWidth()" onmouseout="resetHighlightStats()"><span id="excess-headroom-width"></span><span class="units-abbrev">"</span></td>
-<td><span id="weight"></span><span class="units-weight-abbrev"> oz</span></td></tr>
+<section class="section">
+  <table class="table is-striped">
+    <tr>
+      <th></th>
+      <th id="tent-name-stats" class="tent-background"></th>
+      <th id="tent-compare-name-stats" class="compare-tent-column compare-tent-background"></th>
+    </tr>
+    <tr>
+      <th>Extra Sleeping Room</th>
+      <td style="cursor: pointer" onmouseover="highlightTentSleepingLength()" onmouseout="resetHighlightStats()"><span id="excess-sleeping-length"></span><span class="units-abbrev">"</span></td>
+      <td class="compare-tent-column" style="cursor: pointer" onmouseover="highlightCompareTentSleepingLength()" onmouseout="resetHighlightStats()"><span id="compare-excess-sleeping-length"></span><span class="units-abbrev">"</span></td>
+    </tr>
+    <tr>
+      <th>Extra Headroom Length</th>
+      <td style="cursor: pointer" onmouseover="highlightTentHeadroomLength()" onmouseout="resetHighlightStats()"><span id="excess-headroom-length"></span><span class="units-abbrev">"</span></td>
+      <td class="compare-tent-column" style="cursor: pointer" onmouseover="highlightCompareTentHeadroomLength()" onmouseout="resetHighlightStats()"><span  id="compare-excess-headroom-length"></span><span class="units-abbrev">"</span></td>
+    </tr>
+    <tr>
+      <th>Extra Headroom Width</th>
+      <td style="cursor: pointer" onmouseover="highlightTentHeadroomWidth()" onmouseout="resetHighlightStats()"><span id="excess-headroom-width"></span><span class="units-abbrev">"</span></td>
+      <td class="compare-tent-column" style="cursor: pointer" onmouseover="highlightCompareTentHeadroomWidth()" onmouseout="resetHighlightStats()"><span  id="compare-excess-headroom-width"></span><span class="units-abbrev">"</span></td>
+    </tr>
+    <tr>
+      <th>Weight</th>
+      <td><span id="weight"></span><span class="units-weight-abbrev"> oz</span></td>
+      <td class="compare-tent-column"><span id="compare-weight"></span><span class="units-weight-abbrev"> oz</span></td>
+    </tr>
+    <tr>
+      <th>Manufacturer Link</th>
+      <td><span id="manufacturer-link"></span></td>
+      <td class="compare-tent-column"><span id="compare-manufacturer-link"></span></td>
+    </tr>
+    <tr id="compare-stats-row">
+      <th>Notes</th>
+      <td id="tent-notes"></td>
+      <td class="compare-tent-column" id="tent-compare-notes" colspan="4"></td>
+    </tr>
+  </table>
 
-<tr id="tent-notes-row" style="display: none"><td></td><td id="tent-notes" colspan="4"></td></tr>
-
-<tr id="compare-stats-row" style="background: #E0B0E0">
-<td id="tent-compare-name-stats"></td>
-<td style="cursor: pointer" onmouseover="highlightCompareTentSleepingLength()" onmouseout="resetHighlightStats()"><span id="compare-excess-sleeping-length"></span><span class="units-abbrev">"</span></td>
-<td style="cursor: pointer" onmouseover="highlightCompareTentHeadroomLength()" onmouseout="resetHighlightStats()"><span  id="compare-excess-headroom-length"></span><span class="units-abbrev">"</span></td>
-<td style="cursor: pointer" onmouseover="highlightCompareTentHeadroomWidth()" onmouseout="resetHighlightStats()"><span  id="compare-excess-headroom-width"></span><span class="units-abbrev">"</span></td>
-<td><span id="compare-weight"></span><span class="units-weight-abbrev"> oz</span></td></tr>
-
-<tr id="tent-compare-notes-row" style="display: none"><td></td><td id="tent-compare-notes" colspan="4"></td></tr>
-
-</table>
-<div id="estimated" style="text-align:center; margin-top: 0.5em; display: none">* estimated</div>
+  <div id="estimated" style="display: none">* = estimated</div>
+</section>
 
 <script type="text/javascript" src="tents.js"></script>
 <script type="text/javascript" src="input.js"></script>
@@ -332,7 +435,7 @@ function drawFromSettings(changed) {
       profile, profile.sittingHeight);
   sleepingLength = tent.getLayingWidthAtHeight(profile.sleepingHeights());
 
-  document.getElementById("tent-name-stats").innerHTML = outputTentName(tent);
+  document.getElementById("tent-name-stats").innerHTML = tent.name;
   if (name == "Generic A-Frame") {
     document.getElementById("tent-name-stats").innerHTML += "<br/>" + aFrameSize;
   }
@@ -347,27 +450,31 @@ function drawFromSettings(changed) {
   } else {
     document.getElementById("weight").innerHTML = ""; 
   }
+  if (tent.url) {
+    document.getElementById("manufacturer-link").innerHTML = "<a href=\"" + tent.url + "\" target=\"poup\">" + tent.brand + "</a>";
+  }
   if (tent.estimated) {
     estimated = true;
     document.getElementById("tent-name-stats").innerHTML += " *";
-    document.getElementById("excess-sleeping-length").innerHTML += " *";
-    document.getElementById("excess-headroom-length").innerHTML += " *";
-    document.getElementById("excess-headroom-width").innerHTML += " *";
   }
   if (tent.panelPullouts) {
     document.getElementById("tent-name-stats").innerHTML += " (with pullouts)";
   }
   if (tent.note) {
-    document.getElementById("tent-notes-row").style = "display: table-row";
     document.getElementById("tent-notes").innerHTML = tent.note;
   } else {
-    document.getElementById("tent-notes-row").style = "display: none";
+    document.getElementById("tent-notes").innerHTML = "";
   }
   if (compareName) {
+    var compareCells = document.getElementsByClassName("compare-tent-column");
+    for (var i = 0; i < compareCells.length; i++) {
+      compareCells[i].style.display = "table-cell";
+    }
+
     var tent = gTents[compareAssignName];
     [headLength, headWidth] = tent.getExtraHeadWidthsAtHeight(profile, profile.sittingHeight);
     sleepingLength = tent.getLayingWidthAtHeight(profile.sleepingHeights());
-    document.getElementById("tent-compare-name-stats").innerHTML = outputTentName(tent);
+    document.getElementById("tent-compare-name-stats").innerHTML = tent.name;
     if (compareName == "Generic A-Frame") {
       document.getElementById("tent-compare-name-stats").innerHTML += "<br/>" + compareAFrameSize;
     }
@@ -382,6 +489,9 @@ function drawFromSettings(changed) {
     } else {
       document.getElementById("compare-weight").innerHTML = "";
     }
+    if (tent.url) {
+      document.getElementById("compare-manufacturer-link").innerHTML = "<a href=\"" + tent.url + "\" target=\"poup\">" + tent.brand + "</a>";
+    }
     var el = document.getElementById("compare-stats-row");
     if (el) {
       el.style.display = "table-row";
@@ -389,27 +499,23 @@ function drawFromSettings(changed) {
     if (tent.estimated) {
       estimated = true;
       document.getElementById("tent-compare-name-stats").innerHTML += " *";
-      document.getElementById("compare-excess-sleeping-length").
-          innerHTML += " *";
-      document.getElementById("compare-excess-headroom-length").
-          innerHTML += " *";
-      document.getElementById("compare-excess-headroom-width").
-          innerHTML += " *";
     }
     if (tent.panelPullouts) {
       document.getElementById("tent-compare-name-stats").innerHTML +=
           " (with pullouts)";
     }
     if (tent.note) {
-      document.getElementById("tent-compare-notes-row").style = "display: table-row";
       document.getElementById("tent-compare-notes").innerHTML = tent.note;
     } else {
-      document.getElementById("tent-compare-notes-row").style = "display: none";
+      document.getElementById("tent-compare-notes").innerHTML = "";
     }
   } else {
-    document.getElementById("compare-stats-row").style.display = "none";
-    document.getElementById("tent-compare-notes-row").style = "display: none";
+    var compareCells = document.getElementsByClassName("compare-tent-column");
+    for (var i = 0; i < compareCells.length; i++) {
+      compareCells[i].style.display = "none";
+    }
   }
+  
   if (estimated) {
     document.getElementById("estimated").style.display = "block";
   } else {

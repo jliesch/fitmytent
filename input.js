@@ -273,11 +273,3 @@ function outputWeight(ounces, units) {
     return Math.round(10 * ounces) / 10 + (units ? " oz" : "");
   }
 }
-
-function outputTentName(tent) {
-  if (tent.url) {
-    return "<a href=\"" + tent.url + "\" target=\"poup\">" + tent.name + "</a>";
-  } else {
-    return tent.name;
-  }
-}

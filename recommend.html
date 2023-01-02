@@ -5,31 +5,82 @@
 </head>
 <body>
 
-<div class="header">
-<a href="index.html" class="title-icon">&#x25b3;</a><a href="index.html" class="title">Fit my Tent</a>
-<a href="help.html" class="menu">Help</a>
-<a href="data.html" class="menu">Data</a>
-<a href="about.html" class="menu">About</a>
-<a href="recommend.html" class="menu">Recommend</a>
-<a href="index.html" class="menu">Home</a>
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item title" href="index.html">
+      &#x25b3; Fit my Tent
+    </a>
+  </div>
+  
+  <div class="navbar-menu is-active">
+    <div class="navbar-end">
+      <a href="index.html" class="navbar-item">Home</a>
+      <a href="recommend.html" class="navbar-item">Recommend</a>
+      <a href="about.html" class="navbar-item">About</a>
+      <a href="data.html" class="navbar-item">Data</a>
+      <a href="help.html" class="navbar-item">Help</a>
+    </div>
+  </div>
+</nav>
+  
+<section class="section">
+
+<div class="panel" style="width: 50%">
+  <p class="panel-heading">
+    Tent Recommendations
+  </p>
+  <div class="panel-block">
+    <p class="control">
+      <table class="table is-borderless is-vertically-aligned is-no-padding">
+        <tr>
+          <td><label class="label is-small">Your Height</label></td>
+          <td><input class="input" type="number" id="height-input" style="width: 6em"></td>
+          <td><label class="label is-small">inches</label></td>
+        </tr>
+
+        <tr class="advanced-options" style="display: none">
+          <td><label class="label is-small">Sitting Height</label></td>
+          <td><input class="input" type="number" id="sitting-height-input" style="width: 6em"></td>
+          <td><label class="label is-small">inches</label></td>
+        </tr>
+
+        <tr class="advanced-options" style="display: none">
+          <td><label class="label is-small">Shoulder Width</label></td>
+          <td><input class="input" type="number" id="shoulder-width-input" style="width: 6em"></td>
+          <td><label class="label is-small">inches</label></td>
+        </tr>
+
+        <tr class="advanced-options" style="display: none">
+          <td><label class="label is-small">Foot Length</label></td>
+          <td><input class="input" type="number" id="foot-length-input" style="width: 6em"></td>
+          <td><label class="label is-small">inches</label></td>
+        </tr>
+
+        <tr class="advanced-options" style="display: none">
+          <td><label class="label is-small">Sleeping Bag Loft</label></td>
+          <td><input class="input" type="number" id="loft-input" style="width: 6em"></td>
+          <td><label class="label is-small">inches</label></td>
+        </tr>
+
+        <tr class="advanced-options" style="display: none">
+          <td><label class="label is-small">Sleeping Pad Height</label></td>
+          <td><input class="input" type="number" id="pad-height-input" style="width: 6em"></td>
+          <td><label class="label is-small">inches</label></td>
+        </tr>
+        
+        <tr>
+          <td></td>
+          <td colspan="2"><button class="button is-small is-rounded" onclick="toggleAdvanced()"><span id="advanced-button" >Advanced &darr;</span></button></td>
+         </tr>
+      </table>
+    
+    </p>
+  </div>
 </div>
-
-<div id="options">
-<table>
-
-<tr><td class="label">Your Height:</td><td class="value" style="min-width: 20em"><input type="number" id="height-input"> <span class="units">inches</span></td></tr>
-
-<tr class="advanced-options"><td class="label">Sitting Height:</td><td class="value"><input type="number" id="sitting-height-input">  <span class="units">inches</span></td></tr>
-<tr class="advanced-options"><td class="label">Shoulder Width:</td><td class="value"><input type="number" id="shoulder-width-input">  <span class="units">inches</span></td></tr>
-<tr class="advanced-options"><td class="label">Foot Length:</td><td class="value"><input type="number" id="foot-length-input">  <span class="units">inches</span></td></tr>
-<tr class="advanced-options"><td class="label">Sleeping Bag Loft:</td><td class="value"><input type="number" id="loft-input">  <span class="units">inches</span></td></tr>
-<tr class="advanced-options"><td class="label">Sleeping Pad Height:</td><td class="value"><input type="number" id="pad-height-input">  <span class="units">inches</span></td></tr>
-</table>
-
-<div id="advanced-button-container"><span id="advanced-button" onclick="toggleAdvanced()">Advanced &darr;</span></div>
-</div>
-
+  
 <div id="clusters"></div>
+  
+</section>
 
 <script type="text/javascript" src="tents.js"></script>
 <script type="text/javascript" src="input.js"></script>
