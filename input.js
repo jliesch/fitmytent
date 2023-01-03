@@ -282,11 +282,9 @@ function outputWeight(ounces, units) {
 * using 'navigator.sendBeacon' in browser that support it.
 */
 var openAndCaptureOutboundLink = function(url) {
-  window.open(url, "_blank");
-
   ga('send', 'event', 'outbound', 'click', url, {
     'transport': 'beacon',
-    'hitCallback': function(){document.location = url;}
+    'hitCallback': function(){window.open(url, "_blank");}
   });
     
   return false;
