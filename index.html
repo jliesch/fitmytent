@@ -471,7 +471,7 @@ function drawFromSettings(changed) {
     document.getElementById("price").innerHTML = ""; 
   }
   if (tent.url) {
-    document.getElementById("manufacturer-link").innerHTML = "<a href=\"" + tent.url + "\" target=\"poup\">" + tent.brand + "</a>";
+    document.getElementById("manufacturer-link").innerHTML = "<a onclick=\"return openAndCaptureOutboundLink('" + tent.url + "')\">" + tent.brand + "</a>";
   }
   if (tent.estimated) {
     estimated = true;
@@ -515,7 +515,7 @@ function drawFromSettings(changed) {
       document.getElementById("compare-price").innerHTML = ""; 
     }
     if (tent.url) {
-      document.getElementById("compare-manufacturer-link").innerHTML = "<a href=\"" + tent.url + "\" target=\"poup\">" + tent.brand + "</a>";
+      document.getElementById("compare-manufacturer-link").innerHTML = "<a onclick=\"openAndCaptureOutboundLink('" + tent.url + "')\">" + tent.brand + "</a>";
     }
     var el = document.getElementById("compare-stats-row");
     if (el) {

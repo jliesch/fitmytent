@@ -273,3 +273,21 @@ function outputWeight(ounces, units) {
     return Math.round(10 * ounces) / 10 + (units ? " oz" : "");
   }
 }
+
+/**
+* Function that captures a click on an outbound link in Analytics and opens the link 
+* in a new window.
+* This function takes a valid URL string as an argument, and uses that URL string
+* as the event label. Setting the transport method to 'beacon' lets the hit be sent
+* using 'navigator.sendBeacon' in browser that support it.
+*/
+var openAndCaptureOutboundLink = function(url) {
+  window.open(url, "_blank");
+
+  ga('send', 'event', 'outbound', 'click', url, {
+    'transport': 'beacon',
+    'hitCallback': function(){document.location = url;}
+  });
+    
+  return false;
+}
