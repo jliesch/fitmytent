@@ -11,7 +11,7 @@ function brandAbbreviation(brand) {
   }
 }
 
-// Database of all tents. See tents.js for documentation.
+// Database of all tents. See tent.js for documentation.
 var gTents = {
   "3F UL Lanshan 1 Pro":
     new Tent("3F UL", "Lanshan 1 Pro", OutlineType.Pyramid,
