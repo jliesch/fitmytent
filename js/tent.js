@@ -45,32 +45,46 @@ function formatInches(h) {
   return feet + "'" + inches + "\"";
 }
 
+// Tent contains all information to describe a tent.
+//
+// There are a few classes of information about each tent:
+// - Metadata includes brand, name, weight, etc. This is information about
+//   a tent.
+// - Usable space data is used for computing the tent's usable state. It is
+//   mostly computed from sleepingLength, sittingLength and sittingWidth.
+//   isInnerNet and walls also have a small effect.
+// - Cosmetic data includes everything else. 
 class Tent {
   constructor(brand, name, outlineType, outline, frontOutline, sleepingLength, sittingLength, sittingWidth) {
+    // Metadata
     this.brand = brand;
     this.name = name;
-    this.outlineType = outlineType;
-    this.sideOutline = outline;
-    this.frontOutline = frontOutline;
+    this.isTarp = false;
+    this.weight = false;
+    this.price = false;
+    this.url = false;
+    this.panelPullouts = false;
+    this.estimated = false;
+    this.note = false;
+    
+    // Usable space data
     this.sleepingLength = sleepingLength;
     this.sittingLength = sittingLength;
     this.sittingWidth = sittingWidth;
+    this.isInnerNet = false;
+    this.walls = 1;
+
+    // Cosmetic data
+    this.outlineType = outlineType;
+    this.sideOutline = outline;
+    this.frontOutline = frontOutline;
     this.layingHeight = 12;
     this.interiorPeakWidth = 0;
     this.interiorPeakHeight = false;
     this.frontInteriorPeakWidth = 0;
     this.frontInteriorPeakOffset = false;
     this.frontSittingOffset = false;
-    this.isInnerNet = false;
     this.rainflyWidth = 0;
-    this.isTarp = false;
-    this.walls = 1;
-    this.panelPullouts = false;
-    this.weight = false;
-    this.price = false;
-    this.url = false;
-    this.estimated = false;
-    this.note = false;
 
     // Compute max width and height of this.
     var peakTotal = 0;
