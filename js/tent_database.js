@@ -163,7 +163,7 @@ var gTents = {
              83.5, 56, 25)  // usable dimension
              .setFrontInteriorPeakWidth(56)
              .setWeight(20.4)
-             .setPrice(300)
+             .setPrice(679)
              .setUrl("https://durstongear.com/product/x-mid-pro-2p"),
  "X-Mid 2p Tarp":
     new Tent("Durston", "X-Mid 2p Tarp", OutlineType.Pyramid,
@@ -572,6 +572,30 @@ var gTents = {
              .setWeight(17.3)
              .setPrice(535)
              .setUrl("https://www.tarptent.com/product/aeon-li/"),
+  "TT Dipole 1 Li":
+    new Tent("Tarptent", "Dipole 1 Li", OutlineType.Pyramid,
+             [[0,0], [0,21], [46, 47], [92,21], [92, 0]],
+             [[17,0], [0,6], [17, 47], [45, 47], [62,6], [45,0]],
+             92, 27, 28)
+             .setSideFootprint(0, 92)
+             .setFrontFootprint(17, 45)
+             .setFrontInteriorPeakWidth(28)
+             .setEstimated()
+             .setWeight(22.8)
+             .setPrice(699)
+             .setUrl("https://www.tarptent.com/product/dipole-1-li/"),
+  "TT Dipole 2 Li":
+    new Tent("Tarptent", "Dipole 2 Li", OutlineType.Pyramid,
+             [[0,0], [0,21], [47, 47], [94,21], [94, 0]],
+             [[17,0], [0,6], [17, 47], [65, 47], [82,6], [65,0]],
+             94, 27.5, 48)
+             .setSideFootprint(0, 94)
+             .setFrontFootprint(17, 65)
+             .setFrontInteriorPeakWidth(48)
+             .setEstimated()
+             .setWeight(26.71)
+             .setPrice(799)
+             .setUrl("https://www.tarptent.com/product/dipole-2-li/"),
   "TT Protrail":
     new Tent("Tarptent", "Protrail", OutlineType.Pyramid,
              [[0,0], [0, 24], [84, 45], [107, 0]],
