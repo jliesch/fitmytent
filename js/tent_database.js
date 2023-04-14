@@ -46,7 +46,7 @@ var gTents = {
              76, 41, 36.5)  // usable dimension
              .setRainflyWidth(23)
              .setWalls(2)
-             .setWeight(43)
+             .setWeight(50)
              .setPrice(449.95)
              .setUrl("https://www.bigagnes.com/Copper-Spur-HV-UL2-2020"),
   "BA Fly Creek HV UL2":
@@ -55,7 +55,7 @@ var gTents = {
              [52,40],
              75.8, 32, 23.5)  // usable dimension
              .setWalls(2)
-             .setWeight(31)
+             .setWeight(36)
              .setPrice(349.95)
              .setUrl("https://www.bigagnes.com/Fly-Creek-HV-UL2-Person?quantity=1&custcol8=144"),
   "BA Tiger Wall UL2":
@@ -65,7 +65,7 @@ var gTents = {
              72, 39.75, 30)  // usable dimension
              .setWalls(2)
              .setRainflyWidth(21)
-             .setWeight(35)
+             .setWeight(40)
              .setPrice(399.95)
              .setUrl("https://www.bigagnes.com/Tiger-Wall-UL2"),
   "Bonfus Duos 2p":
@@ -596,6 +596,15 @@ var gTents = {
              .setWeight(26.71)
              .setPrice(799)
              .setUrl("https://www.tarptent.com/product/dipole-2-li/"),
+  "TT Double Rainbow":
+    new Tent("Tarptent", "Double Rainbow", OutlineType.Dome,
+             [88, 42], // length, height
+             [50, 42],  // width, height
+             81, 50, 25)  // usable dimension
+             .setRainflyWidth(23)
+             .setWeight(38.2)
+             .setPrice(339)
+             .setUrl("https://www.tarptent.com/product/double-rainbow"),
   "TT Protrail":
     new Tent("Tarptent", "Protrail", OutlineType.Pyramid,
              [[0,0], [0, 24], [84, 45], [107, 0]],
