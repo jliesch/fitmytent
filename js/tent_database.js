@@ -168,9 +168,8 @@ var gTents = {
    "X-Mid 2p Pro":
     new Tent("Durston", "X-Mid 2p Pro", OutlineType.Pyramid,
              [[0,0], [23, 44], [77, 44], [100, 0]],
-             [[0,0], [4,44], [46,44], [80,0]],
+             [[0,0], [26,44], [46,44], [80,0]],
              83.5, 56, 25)  // usable dimension
-             .setFrontInteriorPeakWidth(56)
              .setWeight(20.4)
              .setPrice(679)
              .setUrl("https://durstongear.com/product/x-mid-pro-2p"),
@@ -583,10 +582,10 @@ var gTents = {
              .setUrl("https://www.tarptent.com/product/aeon-li/"),
   "TT Dipole 1 Li":
     new Tent("Tarptent", "Dipole 1 Li", OutlineType.Pyramid,
-             [[0,0], [0,21], [46, 47], [92,21], [92, 0]],
+             [[4,0], [0,21], [46, 47], [92,21], [88, 0]],
              [[17,0], [0,6], [17, 47], [45, 47], [62,6], [45,0]],
-             92, 27, 28)
-             .setSideFootprint(0, 92)
+             84, 27, 28)
+             .setSideFootprint(4, 88)
              .setFrontFootprint(17, 45)
              .setFrontInteriorPeakWidth(28)
              .setEstimated()
@@ -595,10 +594,10 @@ var gTents = {
              .setUrl("https://www.tarptent.com/product/dipole-1-li/"),
   "TT Dipole 2 Li":
     new Tent("Tarptent", "Dipole 2 Li", OutlineType.Pyramid,
-             [[0,0], [0,21], [47, 47], [94,21], [94, 0]],
+             [[4,0], [0,21], [47, 47], [94,21], [90, 0]],
              [[17,0], [0,6], [17, 47], [65, 47], [82,6], [65,0]],
-             94, 27.5, 48)
-             .setSideFootprint(0, 94)
+             86, 27.5, 48)
+             .setSideFootprint(4, 90)
              .setFrontFootprint(17, 65)
              .setFrontInteriorPeakWidth(48)
              .setEstimated()
