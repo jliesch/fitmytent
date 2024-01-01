@@ -30,7 +30,7 @@ table td.shrink {
   background: #B3E2A2;
 }
 .compare-tent-background {
-  background: #E0B0E0;
+  background: #ddd;
 }
 
 .table.is-borderless,
@@ -130,7 +130,7 @@ body a:hover {
   background: #B3E2A2;
 }
 #tent-compare-dropdown {
-  background: #E0B0E0;
+  background: #ddd;
 }
 #options tr.generic-tent,
 #options tr.generic-compare-tent,

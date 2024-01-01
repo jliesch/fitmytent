@@ -127,7 +127,7 @@ class Profile {
                ptY(this.padHeight));
     ctx.lineTo(ptX(mid - this.height / 2),
                ptY(this.padHeight));
-    ctx.fillStyle = "lightgray";
+    ctx.fillStyle = "#E0B0E0";
     ctx.fill();
     ctx.strokeStyle = "#555";
     ctx.stroke();
@@ -190,7 +190,7 @@ class Profile {
                ptY(this.sittingHeight - 2));
     ctx.lineTo(ptX(-this.headDiameter / 2 * 0.6),
                ptY(this.sittingHeight));
-    ctx.fillStyle = "lightgray";
+    ctx.fillStyle = "#E0B0E0";
     ctx.fill();
     ctx.strokeStyle = "#555";
     ctx.stroke();

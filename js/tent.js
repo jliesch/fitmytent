@@ -914,7 +914,7 @@ function drawTent(name, compareName, profile) {
   if (shouldDrawCompare) {
     setSideXOff(compareTent);
     compareTent.drawUsableArea(
-        false, "#E0B0E0", false, compareName + " Usable Area");
+        false, "#ddd", false, compareName + " Usable Area");
   }
   if (shouldDrawTent) {
     setSideXOff(tent);
@@ -925,7 +925,7 @@ function drawTent(name, compareName, profile) {
   // Draw front view fills.
   if (shouldDrawCompare) {
     setFrontXOff(tent, compareTent);
-    compareTent.drawFrontUsableArea(false, "#E0B0E0", false, compareName + " Usable Area");  // fill
+    compareTent.drawFrontUsableArea(false, "#ddd", false, compareName + " Usable Area");  // fill
   }
   if (shouldDrawTent) {
     setFrontXOff(tent);
