@@ -134,11 +134,20 @@ var gTents = {
              .setWeight(9.9)
              .setPrice(220)
              .setUrl("https://durstongear.com/product/x-mid-1p"),
+   "X-Mid 1p Pro":
+    new Tent("Durston", "X-Mid 1p Pro", OutlineType.Pyramid,
+             [[0,0], [28, 45], [72, 45], [98, 0]],
+             [[0,0], [22, 45], [45, 45], [63,0]],
+             90, 50, 24)  // usable dimension
+             .setFrontInteriorPeakWidth(12)
+             .setWeight(19.2)
+             .setPrice(599)
+             .setUrl("https://durstongear.com/products/x-mid-pro-1-tent-ultralight-thruhiking"),
   "X-Mid 1p Tarp":
     new Tent("Durston", "X-Mid 1p Tarp", OutlineType.Pyramid,
-             [[0,0], [28, 46], [72, 46], [100, 0]],
-             [[0,0], [22, 46], [45, 46], [67,0]],
-             83, 51, 20)  // usable dimension
+             [[0,0], [28, 45], [72, 45], [98, 0]],
+             [[0,0], [22, 45], [45, 45], [63,0]],
+             92, 51, 20)  // usable dimension
              .setFrontFootprint(8, 59)
              .setFrontInteriorPeakWidth(12)
              .setIsTarp()
@@ -158,8 +167,8 @@ var gTents = {
              .setUrl("https://durstongear.com/product/x-mid-2p"),
    "X-Mid 2p Pro":
     new Tent("Durston", "X-Mid 2p Pro", OutlineType.Pyramid,
-             [[0,0], [23, 44], [69, 44], [92, 0]],
-             [[0,0], [4,44], [46,44], [50,0]],
+             [[0,0], [23, 44], [77, 44], [100, 0]],
+             [[0,0], [4,44], [46,44], [80,0]],
              83.5, 56, 25)  // usable dimension
              .setFrontInteriorPeakWidth(56)
              .setWeight(20.4)
