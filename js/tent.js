@@ -318,9 +318,11 @@ class Tent {
     var footXAt12 = (this.maxLength - this.sleepingLength) / 2;
     var headXAt12 = (this.maxLength + this.sleepingLength) / 2;
     if (headXAt12 > this.layingLengthEnd) {
+      // Move head inwards to the tent if it's past the laying legnth.
+      // Example: TT ProTrail.
       var diff = headXAt12 - this.layingLengthEnd;
-      footXAt12 -= diff / 2;
-      headXAt12 -= diff / 2;
+      footXAt12 -= diff;
+      headXAt12 -= diff;
     }
     if (gUsePanelPullouts && this.panelPullouts) {
       headXAt12 += 2;
