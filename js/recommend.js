@@ -141,7 +141,7 @@ function drawTable(changed) {
     scores[i] = priceScore * priceWeight + weightScore * weightWeight + sleepScore * sleepingRoomWeight + sittingScore * sittingAreaWeight;
   }
   tents.sort((a,b) => scores[a] - scores[b]);
-  tents = tents.slice(0, 100)
+  tents = tents.slice(0, 20)
 
   var el = document.getElementById("clusters");
   var html = "<table id=\"tent-comparison\" class=\"table is-bordered is-striped\">";
