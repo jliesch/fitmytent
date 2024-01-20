@@ -5,7 +5,9 @@ var gParams = [
     // Generic tent params.
     "generic-tent-length-input", "generic-tent-width-input",
     "generic-tent-height-input", "generic-compare-tent-length-input",
-    "generic-compare-tent-width-input", "generic-compare-tent-height-input"
+    "generic-compare-tent-width-input", "generic-compare-tent-height-input",
+    // Recommend params
+    "tent-price-input", "tent-weight-input", "tent-include-tarp", "tent-sleeping-room-input", "tent-sitting-area-input",
 ];
 
 function addInputListeners(callback) {
@@ -13,6 +15,7 @@ function addInputListeners(callback) {
     var el = document.getElementById(param);
     if (el) {
       el.addEventListener('keyup', callback);
+      el.addEventListener('input', callback);
       el.addEventListener('change', callback);
     }
   });
