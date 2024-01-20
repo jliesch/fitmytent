@@ -123,6 +123,16 @@ var gTents = {
              .setEstimated()
              .addNote("Measured using panel pullouts")
              .setUrl("https://bonfus.com/product/solus-1p/"),
+  "X-Mid 1p":
+    new Tent("Durston", "X-Mid 1p", OutlineType.Pyramid,
+             [[0,0], [28, 45], [72, 45], [98, 0]],
+             [[0,0], [22, 45], [45, 45], [63,0]],
+             79, 51, 20)  // usable dimension
+             .setFrontInteriorPeakWidth(9)
+             .setWalls(2)
+             .setWeight(28)
+             .setPrice(220)
+             .setUrl("https://durstongear.com/product/x-mid-1p"),
   "X-Mid 1p Inner":
     new Tent("Durston", "X-Mid 1p Inner", OutlineType.Pyramid,
              [[0,0], [21.625, 43], [64.875, 43], [86.5, 0]],
@@ -154,6 +164,16 @@ var gTents = {
              .setWeight(18)
              .setPrice(220)
              .setUrl("https://durstongear.com/product/x-mid-1p"),
+  "X-Mid 2p":
+    new Tent("Durston", "X-Mid 2p", OutlineType.Pyramid,
+             [[0,0], [23, 44], [69, 44], [92, 0]],
+             [[0,0], [4,44], [46,44], [50,0]],
+             81.25, 58, 28.5)  // usable dimension
+             .setFrontInteriorPeakWidth(54)
+             .setWalls(2)
+             .setWeight(36)
+             .setPrice(300)
+             .setUrl("https://durstongear.com/product/x-mid-2p"),
   "X-Mid 2p Inner":
     new Tent("Durston", "X-Mid 2p Inner", OutlineType.Pyramid,
              [[0,0], [23, 44], [69, 44], [92, 0]],
@@ -626,6 +646,19 @@ var gTents = {
              .setPrice(229)
              .setEstimated()
              .setUrl("https://www.tarptent.com/product/protrail/"),
+  "TT Protrail Li":
+    new Tent("Tarptent", "Protrail Li", OutlineType.Pyramid,
+             [[0,0], [0, 24], [84, 45], [107, 0]],
+             [[0,0], [35,45], [70,0]],
+             84, 20, 11.5)  // usable dimension
+             .setLayingHeight(18)
+             .setSideFootprint(0, 84)
+             .setFrontFootprint(19, 55)  // 36
+             .setRainflyWidth(0)  // front
+             .setWeight(16.5)
+             .setPrice(529)
+             .setEstimated()
+             .setUrl("https://www.tarptent.com/product/protrail-li/"),
   "Zpacks Altaplex":
     new Tent("Zpacks", "Altaplex", OutlineType.Pyramid,
              [[5,0], [0,6], [50, 57], [100,6], [95, 0]],
