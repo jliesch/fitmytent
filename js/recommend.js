@@ -68,6 +68,7 @@ function drawTable(changed) {
   var weightWeight = checkInput("tent-weight-input", 1, 25);
   var sleepingRoomWeight = checkInput("tent-sleeping-room-input", 1, 25);
   var sittingAreaWeight = checkInput("tent-sitting-area-input", 1, 25);
+  var poleWeight = checkInput("trekking-pole-weight-input", 0, 100);
   var includeTarps = document.getElementById("tent-include-tarp").checked;
     
   // Normalize
@@ -134,7 +135,7 @@ function drawTable(changed) {
       tents.push(i);
     }
     var priceScore = (tent.price - priceMean) / priceStdDev;
-    var weightScore = (tent.weight - weightMean) / weightStdDev;
+    var weightScore = (tent.weight + tent.poles * poleWeight - weightMean) / weightStdDev;
     var sleepScore = -(SleepingRoomScore(tent, profile) - sleepingRoomMean) / sleepingRoomStdDev;
     var sittingScore = -(SittingAreaScore(tent) - sittingAreaMean) / sittingAreaStdDev;
     console.log(i + ", " + priceScore + ", " + weightScore + ", " + sleepScore + ", " + sittingScore);
@@ -149,7 +150,7 @@ function drawTable(changed) {
   for (i = 0; i < tents.length; i++) {
     var name = tents[i];
     tent = gTents[name];
-    html += "<tr><td class=\"name\">" + "<a href=\"index.html?tent-dropdown=" + name + "\">" + name + "</a></td><td>" + outputLength(tent.sleepingLength - profile.sleepingLength(), 0, true) +  "</td><td>" + outputLength(gTents[name].sittingLength, 0, true) + " x " + outputLength(tent.sittingWidth, 0, true) + "</td><td>" + (tent.weight ? outputWeight(tent.weight, true) : "") + "</td><td>" + (tent.price ? "$" + tent.price : "") + "</td></tr>";
+    html += "<tr><td class=\"name\">" + "<a href=\"index.html?tent-dropdown=" + name + "\">" + name + "</a></td><td>" + outputLength(tent.sleepingLength - profile.sleepingLength(), 0, true) +  "</td><td>" + outputLength(gTents[name].sittingLength, 0, true) + " x " + outputLength(tent.sittingWidth, 0, true) + "</td><td>" + (tent.weight ? outputWeight(tent.weight + tent.poles * poleWeight, true) : "") + "</td><td>" + (tent.price ? "$" + tent.price : "") + "</td></tr>";
   }
   el.innerHTML = html + "</table>";
 

@@ -23,6 +23,7 @@ var gTents = {
              .setPanelPullouts()
              .setFrontInteriorPeakOffset(27.5)
              .setWeight(24)
+             .setPoles(1)
              .setPrice(158)
              .setUrl("http://3fulgear.com/index.php/product/lanshan-1-pro/")
              .addNote("Sitting width is estimated"),
@@ -36,6 +37,7 @@ var gTents = {
              .setFrontInteriorPeakWidth(47)
              .setPanelPullouts()
              .setWeight(32.25)
+             .setPoles(2)
              .setPrice(178)
              .setEstimated()
              .setUrl("http://3fulgear.com/index.php/product/lanshan-2-pro/"),
@@ -77,6 +79,7 @@ var gTents = {
              .setFrontFootprint(28, 73)
              .setFrontInteriorPeakWidth(53)
              .setWeight(21.0)
+             .setPoles(2)
              .setPrice(699)
              .setEstimated()
              .addNote("Measured using panel pullouts")
@@ -93,6 +96,7 @@ var gTents = {
              .setIsTarp()
              .setEstimated()
              .setWeight(9.7)
+             .setPoles(1)
              .setPrice(509)
              .setUrl("https://bonfus.com/product/middus-1p/"),
   "Bonfus Middus 2p":
@@ -106,6 +110,7 @@ var gTents = {
              .setIsTarp()
              .setEstimated()
              .setWeight(14.6)
+             .setPoles(1)
              .setPrice(595)
              .setUrl("https://bonfus.com/product/middus-2p/"),
   "Bonfus Solus 1p":
@@ -119,6 +124,7 @@ var gTents = {
              .setFrontInteriorPeakOffset(24)
              .setFrontInteriorPeakWidth(0)
              .setWeight(16.6)
+             .setPoles(2)
              .setPrice(679)
              .setEstimated()
              .addNote("Measured using panel pullouts")
@@ -127,21 +133,24 @@ var gTents = {
     new Tent("Durston", "X-Mid 1p", OutlineType.Pyramid,
              [[0,0], [28, 45], [72, 45], [98, 0]],
              [[0,0], [22, 45], [45, 45], [63,0]],
-             79, 51, 20)  // usable dimension
+             81, 51, 22)  // usable dimension
              .setFrontInteriorPeakWidth(9)
              .setWalls(2)
              .setWeight(28)
+             .setPoles(2)
              .setPrice(220)
+             .addNote("Updated for 3rd gen")
              .setUrl("https://durstongear.com/product/x-mid-1p"),
   "X-Mid 1p Inner":
     new Tent("Durston", "X-Mid 1p Inner", OutlineType.Pyramid,
              [[0,0], [21.625, 43], [64.875, 43], [86.5, 0]],
              [[0,0], [2,43], [26,43], [28,0]],
-             74, 30, 12)  // usable dimension
+             76, 30, 14)  // usable dimension
              .setInner(true)
              .setFrontInteriorPeakWidth(9)
              .setWalls(2)
              .setWeight(9.9)
+             .setPoles(2)
              .setPrice(220)
              .setUrl("https://durstongear.com/product/x-mid-1p"),
    "X-Mid 1p Pro":
@@ -151,6 +160,7 @@ var gTents = {
              90, 50, 24)  // usable dimension
              .setFrontInteriorPeakWidth(12)
              .setWeight(19.2)
+             .setPoles(2)
              .setPrice(599)
              .setUrl("https://durstongear.com/products/x-mid-pro-1-tent-ultralight-thruhiking"),
   "X-Mid 1p Tarp":
@@ -172,6 +182,7 @@ var gTents = {
              .setFrontInteriorPeakWidth(54)
              .setWalls(2)
              .setWeight(36)
+             .setPoles(2)
              .setPrice(300)
              .setUrl("https://durstongear.com/product/x-mid-2p"),
   "X-Mid 2p Inner":
@@ -183,6 +194,7 @@ var gTents = {
              .setFrontInteriorPeakWidth(54)
              .setWalls(2)
              .setWeight(15.5)
+             .setPoles(2)
              .setPrice(300)
              .setUrl("https://durstongear.com/product/x-mid-2p"),
    "X-Mid 2p Pro":
@@ -191,6 +203,7 @@ var gTents = {
              [[0,0], [26,44], [46,44], [80,0]],
              83.5, 56, 25)  // usable dimension
              .setWeight(20.4)
+             .setPoles(2)
              .setPrice(679)
              .setUrl("https://durstongear.com/product/x-mid-pro-2p"),
  "X-Mid 2p Tarp":
@@ -202,6 +215,7 @@ var gTents = {
              .setFrontInteriorPeakWidth(58)
              .setIsTarp()
              .setWeight(22)
+             .setPoles(2)
              .setPrice(300)
              .setUrl("https://durstongear.com/product/x-mid-2p"),
   "Generic A-Frame":
@@ -215,6 +229,7 @@ var gTents = {
              .setInteriorPeakWidth(84)
              .setIsTarp()
              .setWeight(11.5)
+             .setPoles(2)
              .setPrice(100),
   "Generic Dome":
     new Tent("Generic", "Dome", OutlineType.Dome,
@@ -226,6 +241,7 @@ var gTents = {
              [[0,0], [50, 49], [100,0]],
              [[0,0], [64 * 1/3,49], [64,0]],
              70, 20, 10)  // Generic values will be overridden.
+             .setPoles(1)
              .setFrontInteriorPeakOffset(64 * 1/3),
   "GG The One":
     new Tent("Gossamer Gear", "The One (2020)", OutlineType.Pyramid,
@@ -237,6 +253,7 @@ var gTents = {
              .setPanelPullouts()
              .setFrontInteriorPeakWidth(40)
              .setWeight(17.7)
+             .setPoles(2)
              .setPrice(299.25)
              .setUrl("https://www.gossamergear.com/products/the-one"),
   "HMG Ultamid 2":
@@ -246,6 +263,7 @@ var gTents = {
              95, 53, 43)  // usable dimension
              .setIsTarp()
              .setWeight(17.72)
+             .setPoles(1)
              .setPrice(735)
              .setUrl("https://www.hyperlitemountaingear.com/products/ultamid-2-ultralight-pyramid-tent")
              .setEstimated()
@@ -257,6 +275,7 @@ var gTents = {
              105, 73, 73)  // usable dimension
              .setIsTarp()
              .setWeight(23)
+             .setPoles(1)
              .setPrice(890)
              .setUrl("https://www.hyperlitemountaingear.com/products/ultamid-4-ultralight-pyramid-tent")
              .addNote("Pitched using 8 stakes. 4 on the corners and one pulling out each edge."),
@@ -269,6 +288,7 @@ var gTents = {
              .setFrontFootprint(16, 71) // 55
              .setFrontInteriorPeakWidth(12)
              .setWeight(36)
+             .setPoles(2)
              .setPrice(315)
              .setUrl("https://lightheartgear.com/products/lightheart-duo-tent"),
   "LHG Firefly":
@@ -281,6 +301,7 @@ var gTents = {
              .setFrontInteriorPeakWidth(18)
              .setWalls(1.5)
              .setWeight(27.5)
+             .setPoles(2)
              .setPrice(290)
              .setUrl("https://lightheartgear.com/collections/tents/products/copy-of-lightheart-firefly-awning-tent"),
   "LHG SoLong 6":
@@ -292,6 +313,7 @@ var gTents = {
              .setFrontFootprint(18.25, 60.75) // 55 42.5
              .setFrontInteriorPeakWidth(18)
              .setWeight(32)
+             .setPoles(2)
              .setPrice(315)
              .setUrl("https://lightheartgear.com/collections/tents/products/lightheart-solong-6-sil-poly-fabric"),
   "Marmot Tungsten 2p UL":
@@ -314,6 +336,7 @@ var gTents = {
              .setIsTarp()
              //.setFrontSittingOffset(30)
              .setWeight(11.5)
+             .setPoles(1)
              .setPrice(185)
              .setUrl("https://mountainlaureldesigns.com/product/cricket-pyramid-tarp/"),
   "MLD Grace Solo Tarp (120cm)":
@@ -328,6 +351,7 @@ var gTents = {
              .setIsTarp()
              .setInteriorPeakHeight(43)
              .setWeight(9)
+             .setPoles(2)
              .setPrice(140)
              .setUrl("https://mountainlaureldesigns.com/product/mld-grace-tarp/"),
   "MLD Solomid XL (2019 DCF)":
@@ -339,6 +363,7 @@ var gTents = {
              .setFrontSittingOffset(27.5)
              .setIsTarp()
              .setWeight(13.5)
+             .setPoles(1)
              .setPrice(475),
   "Nemo Dagger 2p":
     new Tent("Nemo", "Dagger 2p", OutlineType.Dome,
@@ -439,6 +464,7 @@ var gTents = {
              .setPanelPullouts()
              .setIsTarp()
              .setWeight(13)
+             .setPoles(1)
              .setPrice(185)
              .setUrl("https://www.sixmoondesigns.com/products/deschutes"),
   "SMD Gatewood Cape (114cm)":
@@ -452,6 +478,7 @@ var gTents = {
              .setPanelPullouts()
              .setIsTarp()
              .setWeight(11)
+             .setPoles(1)
              .setPrice(155)
              .setEstimated()
              .setUrl("https://www.sixmoondesigns.com/products/gatewood-cape"),
@@ -465,6 +492,7 @@ var gTents = {
              .setPanelPullouts()
              .setFrontInteriorPeakOffset(27.5)
              .setWeight(26)
+             .setPoles(1)
              .setPrice(230)
              .setEstimated()
              .setUrl("https://www.sixmoondesigns.com/products/lunar-solo"),
@@ -477,6 +505,7 @@ var gTents = {
              .setInner(true)
              .setWalls(2)
              .setWeight(11)
+             .setPoles(1)
              .setPrice(135)
              .setUrl("https://www.sixmoondesigns.com/products/serenity-nettent"),
   "SMD Skyscape Trekker":
@@ -488,6 +517,7 @@ var gTents = {
              .setFrontFootprint(23, 53)
              .setFrontInteriorPeakWidth(12)
              .setWeight(28)
+             .setPoles(2)
              .setPrice(250)
              .setEstimated()
              .setUrl("https://www.sixmoondesigns.com/products/skyscape-trekker"),
@@ -502,6 +532,7 @@ var gTents = {
              .setFrontInteriorPeakOffset(30)
              .setIsTarp()
              .setWeight(19.9)
+             .setPoles(1)
              .setPrice(349.42)
              .setUrl("https://tipik-tentes.fr/abris_tarps/Aston_ST"),
   "Tipik Aston Inner":
@@ -513,6 +544,7 @@ var gTents = {
              .setInner(true)
              .setWalls(2)
              .setWeight(18.7)
+             .setPoles(1)
              .setPrice(620.53)
              .setUrl("https://tipik-tentes.fr/tentes/Aston"),
   "Tipik Aston XL Tarp":
@@ -526,6 +558,7 @@ var gTents = {
              .setFrontInteriorPeakOffset(39)
              .setIsTarp()
              .setWeight(22.6)
+             .setPoles(1)
              .setPrice(421.72)
              .setUrl("https://tipik-tentes.fr/abris_tarps/Aston_XL_ST"),
   "Tipik Aston XL Inner":
@@ -537,6 +570,7 @@ var gTents = {
              .setInner(true)
              .setWalls(2)
              .setWeight(22.9)
+             .setPoles(1)
              .setPrice(729)
              .setUrl("https://tipik-tentes.fr/tentes/Aston_XL"),
   "Tipik Pioulou Tarp":
@@ -561,6 +595,7 @@ var gTents = {
              .setInner(true)
              .setWalls(2)
              .setWeight(14.3)
+             .setPoles(1)
              .setPrice(505)
              .setUrl("https://tipik-tentes.fr/tentes/Pioulou_DT"),
   "Tipik Pioulou XL Tarp":
@@ -574,6 +609,7 @@ var gTents = {
              .setFrontInteriorPeakOffset(24)
              .setIsTarp()
              .setWeight(15.3)
+             .setPoles(1)
              .setPrice(307)
              .setUrl("https://tipik-tentes.fr/abris_tarps/Pioulou_XL_ST"),
   "Tipik Pioulou XL Inner":
@@ -585,6 +621,7 @@ var gTents = {
              .setInner(true)
              .setWalls(2)
              .setWeight(16.93)
+             .setPoles(1)
              .setPrice(554)
              .setUrl("https://tipik-tentes.fr/tentes/Pioulou_XL"),
   "TT Aeon Li":
@@ -598,6 +635,7 @@ var gTents = {
              .setFrontInteriorPeakOffset(25)
              .setFrontInteriorPeakWidth(7)
              .setWeight(17.3)
+             .setPoles(1)
              .setPrice(535)
              .setUrl("https://www.tarptent.com/product/aeon-li/"),
   "TT Dipole 1 Li":
@@ -610,6 +648,7 @@ var gTents = {
              .setFrontInteriorPeakWidth(28)
              .setEstimated()
              .setWeight(22.8)
+             .setPoles(2)
              .setPrice(699)
              .setUrl("https://www.tarptent.com/product/dipole-1-li/"),
   "TT Dipole 2 Li":
@@ -622,6 +661,7 @@ var gTents = {
              .setFrontInteriorPeakWidth(48)
              .setEstimated()
              .setWeight(26.71)
+             .setPoles(2)
              .setPrice(799)
              .setUrl("https://www.tarptent.com/product/dipole-2-li/"),
   "TT Double Rainbow":
@@ -643,6 +683,7 @@ var gTents = {
              .setFrontFootprint(19, 55)  // 36
              .setRainflyWidth(0)  // front
              .setWeight(26)
+             .setPoles(2)
              .setPrice(229)
              .setEstimated()
              .setUrl("https://www.tarptent.com/product/protrail/"),
@@ -656,6 +697,7 @@ var gTents = {
              .setFrontFootprint(19, 55)  // 36
              .setRainflyWidth(0)  // front
              .setWeight(16.5)
+             .setPoles(2)
              .setPrice(529)
              .setEstimated()
              .setUrl("https://www.tarptent.com/product/protrail-li/"),
@@ -669,6 +711,7 @@ var gTents = {
              .setPanelPullouts()
              .setFrontInteriorPeakOffset(20.75)
              .setWeight(15.4)
+             .setPoles(1)
              .setPrice(585)
              .setEstimated()
              .setUrl("https://zpacks.com/products/altaplex-tent"),
@@ -682,6 +725,7 @@ var gTents = {
              .setIsTarp()
              .setFrontInteriorPeakOffset(18)
              .setWeight(4.6)
+             .setPoles(1)
              .setPrice(199)
              .setEstimated()
              .setUrl("https://zpacks.com/products/hexamid-pocket-tarp"),
@@ -694,6 +738,7 @@ var gTents = {
              .setFrontFootprint(20.75, 65.75)
              .setFrontInteriorPeakWidth(53)
              .setWeight(19.4)
+             .setPoles(2)
              .setPrice(699)
              .addNote("Measured using panel pullouts")
              .setUrl("https://zpacks.com/products/duplex-tent"),
@@ -706,6 +751,7 @@ var gTents = {
              .setFrontFootprint(20.75, 65.75)
              .setFrontInteriorPeakWidth(53)
              .setWeight(19.4)
+             .setPoles(2)
              .setEstimated()
              .setPrice(749)
              .setUrl("https://zpacks.com/products/duplex-tent"),
@@ -719,6 +765,7 @@ var gTents = {
              .setPanelPullouts()
              .setFrontInteriorPeakOffset(18.75)
              .setWeight(13.9)
+             .setPoles(1)
              .setPrice(599)
              .setEstimated()
              .setUrl("https://zpacks.com/products/plexsolo-tent"),

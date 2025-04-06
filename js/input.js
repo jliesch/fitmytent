@@ -2,6 +2,7 @@ var gParams = [
     // Profile params.
     "height-input", "sitting-height-input", "shoulder-width-input",
     "foot-length-input", "loft-input", "pad-height-input",
+    "trekking-pole-weight-input",
     // Generic tent params.
     "generic-tent-length-input", "generic-tent-width-input",
     "generic-tent-height-input", "generic-compare-tent-length-input",

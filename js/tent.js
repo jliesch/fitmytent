@@ -60,6 +60,7 @@ class Tent {
     this.brand = brand;
     this.name = name;
     this.isTarp = false;
+    this.poles = 0;  // Trekking poles
     this.weight = false;
     this.price = false;
     this.url = false;
@@ -212,6 +213,11 @@ class Tent {
 
   setWalls(walls) {
     this.walls = walls;
+    return this;
+  }
+
+  setPoles(poles) {
+    this.poles = poles;
     return this;
   }
   
